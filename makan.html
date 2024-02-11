@@ -1,0 +1,2980 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GHAR - A Home</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Inter:wght@700;800&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Heebo", sans-serif;
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.5;
+            color: #666565;
+            background-color: #EFFDF5;
+            -webkit-text-size-adjust: 100%;
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        }
+
+        div {
+            display: block;
+        }
+
+        .str {
+            background-color: #fff !important;
+            padding: 0 !important;
+        }
+
+        /* Spinner CSS Start */
+
+        #spinner {
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity .5s ease-out, visibility 0s linear .5s;
+            z-index: 99999;
+        }
+
+        .spi {
+            background-color: #fff !important;
+            position: fixed !important;
+            transform: translate(-50%, -50%) !important;
+            width: 100% !important;
+            height: 100vh !important;
+            top: 50% !important;
+            left: 50% !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+        }
+
+        .spinner-border {
+            width: 3rem;
+            height: 3rem;
+            display: inline-block;
+            vertical-align: -0.125em;
+            border: 0.25em solid currentColor;
+            border-right-color: transparent;
+            border-radius: 50%;
+        }
+
+        /* Spinner CSS End */
+
+        /* Navbar CSS Start*/
+
+        .container-fluid {
+            width: 100%;
+            margin-right: auto;
+            margin-left: auto;
+            padding-right: var(--bs-gutter-x, .75rem);
+            padding-left: var(--bs-gutter-x, .75rem);
+        }
+
+        .nav-bar {
+            position: relative;
+            margin-top: 45px;
+            padding: 0 3rem;
+            transition: .5s;
+            z-index: 9999;
+            background-color: rgba(0, 0, 0, 0) !important;
+        }
+
+        .nav-bar.sticky-top {
+            position: sticky;
+            padding: 0;
+            z-index: 9999;
+        }
+
+        @media (max-width:991.98px) {
+            .nav-bar {
+                margin: 0;
+                padding: 0;
+            }
+        }
+
+        .navbar {
+            box-shadow: 0 0 30px rgba(0, 0, 0, .08);
+            background-color: #fff !important;
+            padding-top: 0 !important;
+            padding-bottom: 0 !important;
+            padding-right: 1.5rem !important;
+            padding-left: 1.5rem !important;
+            position: relative;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        @media (min-width: 992px) {
+            .navbar-expand-lg {
+                flex-wrap: nowrap;
+                justify-content: flex-start;
+            }
+        }
+
+        .navbar-brand {
+            text-align: center !important;
+            align-items: center !important;
+            display: flex !important;
+            padding-top: 0.3125rem;
+            padding-bottom: 0.3125rem;
+            margin-right: 1rem;
+            font-size: 1.25rem;
+            white-space: nowrap;
+        }
+
+        .navbar-light .navbar-brand {
+            height: 75px;
+            color: rgba(0, 0, 0, .09);
+        }
+
+        .icon {
+            padding: 15px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: #FFFFFF !important;
+            border-radius: 50px;
+            border: 1px dashed #00B98E !important;
+        }
+
+        .mak {
+            padding: 0.5rem !important;
+            margin-right: 0.5rem !important;
+        }
+
+        img {
+            vertical-align: middle;
+        }
+
+        .img-fluid {
+            height: auto;
+            max-width: 100%;
+        }
+
+        .text-primary {
+            color: #00B98E !important;
+        }
+
+        .ghar {
+            margin: 0 !important;
+        }
+
+        h1 {
+            margin-top: 0;
+            font-family: "Inter", sans-serif;
+            font-weight: 700;
+            line-height: 1.2;
+            color: #0E2E50;
+        }
+
+        @media (min-width: 1200px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+        }
+
+        .navbar-light .navbar-toggler {
+            color: rgba(0, 0, 0, 0.55);
+            border-color: rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-toggler {
+            padding: 0.25rem 0.75rem;
+            font-size: 1.25rem;
+            line-height: 1;
+            background-color: transparent;
+            border: 1px solid transparent;
+            border-radius: 5px;
+            transition: box-shadow 0.15s ease-in-out;
+        }
+
+        @media (min-width: 992px) {
+            .navbar-expand-lg .navbar-toggler {
+                display: none;
+            }
+        }
+
+        .navbar-toggler-icon {
+            display: inline-block;
+            width: 1.5em;
+            height: 1.5em;
+            vertical-align: middle;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 100%;
+        }
+
+        .collapse:not(.show) {
+            display: none;
+        }
+
+        .navbar-collapse {
+            flex-basis: 100%;
+            flex-grow: 1;
+            align-items: center;
+        }
+
+        @media (min-width: 992px) {
+            .navbar-expand-lg .navbar-collapse {
+                display: flex !important;
+                flex-basis: auto;
+            }
+        }
+
+        .navbar-nav {
+            display: flex;
+            flex-direction: column;
+            padding-left: 0;
+            margin-bottom: 0;
+            list-style: none;
+            margin-left: auto !important;
+        }
+
+        @media (max-width: 991.98px) {
+            .navbar-light .navbar-nav {
+                border-top: 1px solid #EEEEEE;
+            }
+        }
+
+        @media (min-width: 992px) {
+            .navbar-expand-lg .navbar-nav {
+                flex-direction: row;
+            }
+        }
+
+        .nav-link {
+            display: block;
+            transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+        }
+
+        .navbar-light .navbar-nav .nav-link:hover,
+        .navbar-light .navbar-nav .nav-link.active {
+            color: #00b98e;
+        }
+
+        .navbar-light .navbar-nav .nav-link {
+            color: #0E2E50;
+            font-weight: 500;
+        }
+
+        @media (max-width: 991.98px) {
+            .navbar-light .navbar-nav .nav-link {
+                margin-right: 0;
+                padding: 10px 0;
+            }
+        }
+
+        .navbar-light .navbar-nav .nav-link {
+            margin-right: 30px;
+            padding: 25px 0;
+            font-size: 15px;
+            text-transform: uppercase;
+            outline: none;
+        }
+
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-toggle {
+            white-space: nowrap;
+        }
+
+        .dropdown-toggle::after {
+            display: inline-block;
+        }
+
+        .navbar .dropdown-toggle::after {
+            border: none;
+            content: "\f107";
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            vertical-align: middle;
+            margin-left: 5px;
+            transition: .5s;
+        }
+
+        .dropdown-menu {
+            display: none;
+            z-index: 1000;
+            min-width: 10rem;
+            padding: 0.5rem 0;
+            font-size: 1rem;
+            color: #666565;
+            text-align: left;
+            list-style: none;
+            background-color: #fff;
+            background-clip: padding-box;
+            border: 1px solid rgba(0, 0, 0, 0.15);
+            margin: 0 !important;
+            border-radius: 0 !important;
+        }
+
+        .navbar-nav .dropdown-menu {
+            position: static;
+        }
+
+        @media (min-width: 992px) {
+            .navbar-expand-lg .navbar-nav .dropdown-menu {
+                position: absolute;
+            }
+        }
+
+        @media (min-width: 992px) {
+            .navbar .nav-item .dropdown-menu {
+                display: block;
+                top: 100%;
+                margin-top: 0;
+                transform: rotateX(-75deg);
+                transform-origin: 0% 0%;
+                opacity: 0;
+                visibility: hidden;
+                transition: .5s;
+            }
+        }
+
+        .dropdown-item {
+            display: block;
+            width: 100%;
+            padding: 0.25rem 1rem;
+            clear: both;
+            font-weight: 400;
+            color: #212529;
+            text-align: inherit;
+            white-space: nowrap;
+            background-color: transparent;
+            border: 0;
+        }
+
+        .navbar .dropdown-toggle[aria-expanded=true]::after {
+            transform: rotate(-180deg);
+        }
+
+        .navbar .nav-item:hover .dropdown-menu {
+            transform: rotateX(0deg);
+            visibility: visible;
+            transition: .5s;
+            opacity: 1;
+        }
+
+        .btn {
+            transition: .5s;
+        }
+
+        .property {
+            padding-right: 1rem !important;
+            padding-left: 1rem !important;
+            display: none !important;
+            font-weight: 400;
+            line-height: 1.5;
+            text-align: center;
+            vertical-align: middle;
+            cursor: pointer;
+            user-select: none;
+            border: 1px solid transparent;
+            padding: 0.375rem 0.75rem;
+            font-size: 1rem;
+            border-radius: 5px;
+        }
+
+        @media (min-width: 992px) {
+            .property {
+                display: flex !important;
+            }
+        }
+
+        .btn-primary {
+            background-color: #00B98E;
+            border-color: #00B98E;
+        }
+
+        .btn.btn-primary {
+            color: #FFFFFF;
+        }
+
+        .property:hover {
+            background-color: #00B98E;
+            border-color: #00B98E;
+        }
+
+        /* Navbar CSS End*/
+
+        /*Header CSS Start*/
+
+        .header {
+            background-color: #fff !important;
+            padding: 0 !important;
+        }
+
+        @media (min-width: 992px) {
+            .header {
+                margin-top: -120px;
+            }
+        }
+
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: calc(var(--bs-gutter-y) * -1);
+            margin-right: calc(var(--bs-gutter-x) / -2);
+            margin-left: calc(var(--bs-gutter-x) / -2);
+        }
+
+        @media (min-width: 768px) {
+            .row {
+                flex-direction: row !important;
+            }
+        }
+
+        .find {
+            padding: 4rem !important;
+        }
+
+        .row>* {
+            flex-shrink: 0;
+            width: 100%;
+            max-width: 100%;
+            margin-top: var(--bs-gutter-y);
+            padding-right: calc(var(--bs-gutter-x) * .5);
+            padding-left: calc(var(--bs-gutter-x) * .5);
+        }
+
+        @media (min-width: 992px) {
+            .mt-lg-5 {
+                margin-top: 7rem !important;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .col-md-6 {
+                flex: 0 0 auto;
+                width: 50%;
+            }
+        }
+
+        .display-5 {
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 1.5rem !important;
+        }
+
+        .animated {
+            animation-duration: 1s;
+            animation-fill-mode: both;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .display-5 {
+                font-size: 3rem;
+            }
+        }
+
+        p {
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+
+        .vero {
+            padding-bottom: 0.5rem !important;
+            margin-bottom: 1.5rem !important;
+        }
+
+        .get {
+            padding-top: 1rem !important;
+            padding-bottom: 1rem !important;
+            padding-right: 3rem !important;
+            padding-left: 3rem !important;
+            margin-right: 1rem !important;
+            display: inline-block;
+            font-weight: 400;
+            line-height: 1.5;
+            text-align: center;
+            vertical-align: middle;
+            cursor: pointer;
+            user-select: none;
+            border: 1px solid transparent;
+            font-size: 1rem;
+            border-radius: 5px;
+        }
+
+        .get:hover {
+            background-color: #00B98E;
+            border-color: #00B98E;
+        }
+
+        .owl-carousel {
+            width: 100%;
+            z-index: 1;
+        }
+
+        .owl-carousel.owl-loaded {
+            display: block;
+        }
+
+        .owl-stage {
+            transition: all 0s ease 0s;
+        }
+
+        .owl-carousel,
+        .owl-carousel .owl-item {
+            -webkit-tap-highlight-color: transparent;
+            position: relative;
+        }
+
+        .owl-carousel .owl-stage-outer {
+            position: relative;
+            overflow: hidden;
+            transform: translate3d(0, 0, 0);
+        }
+
+        .owl-carousel .owl-stage {
+            position: relative;
+        }
+
+        .owl-carousel.owl-drag.owl-item {
+            user-select: none;
+        }
+
+        .owl-carousel.owl-item {
+            min-height: 1px;
+            float: left;
+            transform: translate3d(0, 0, 0);
+            position: relative;
+        }
+
+        .owl-carousel .owl-item img {
+            display: block;
+        }
+
+        .owl-carousel .owl-stage:after {
+            content: ".";
+            display: block;
+            clear: both;
+            visibility: hidden;
+            line-height: 0;
+            height: 0;
+        }
+
+        @media (max-width: 768px) {
+            .header-carousel .owl-nav {
+                left: 25px;
+            }
+        }
+
+        .header-carousel .owl-nav {
+            position: absolute;
+            top: 50%;
+            left: -25px;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header-carousel .owl-nav .owl-prev,
+        .header-carousel .owl-nav .owl-next {
+            margin: 7px 0;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #FFFFFF;
+            background: #00B98E;
+            border-radius: 40px;
+            font-size: 20px;
+            transition: .5s;
+        }
+
+        .owl-carousel .owl-nav .owl-prev .owl-dot {
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .bi-chevron-left::before {
+            content: "\f284";
+        }
+
+        [class*=" bi-"]::before {
+            display: inline-block;
+            font-family: bootstrap-icons !important;
+            font-style: normal;
+            font-weight: normal !important;
+            font-variant: normal;
+            text-transform: none;
+            line-height: 1;
+            vertical-align: -0.125em;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .bi-chevron-right::before {
+            content: "\f285";
+        }
+
+        /* Header CSS End*/
+
+        /*Search CSS Start*/
+
+        .searchy {
+            padding: 35px;
+            visibility: visible;
+            animation-delay: 0.1s;
+            animation-name: fadeIn;
+            background-color: #00B98E !important;
+            margin-bottom: 3rem !important;
+        }
+
+        .container {
+            width: 100%;
+            padding-right: var(--bs-gutter-x, .75rem);
+            padding-left: var(--bs-gutter-x, .75rem);
+            margin-right: auto;
+            margin-left: auto;
+        }
+
+        @media (min-width: 1200px) {
+            .container {
+                max-width: 1140px;
+            }
+        }
+
+        /*@media (min-width: 992px) {
+            .container {
+                max-width: 960px;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .container {
+                max-width: 720px;
+            }
+        }
+
+        @media (min-width: 576px) {
+            .container {
+                max-width: 540px;
+            }
+        }*/
+
+        @media (min-width: 768px) {
+            .col-md-10 {
+                flex: 0 0 auto;
+                width: 83.33333%;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .col-md-4 {
+                flex: 0 0 auto;
+                width: 33.33333%;
+            }
+        }
+
+        .g-2 {
+            --bs-gutter-y: .5rem;
+            --bs-gutter-y: .5rem
+        }
+
+        .key {
+            padding-top: 1rem !important;
+            padding-bottom: 1rem !important;
+            border: 0 !important;
+        }
+
+        .form-control {
+            display: block;
+            width: 100%;
+            padding: 0.375rem 0.75rem;
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.5;
+            color: #666565;
+            background-color: #fff;
+            background-clip: padding-box;
+            appearance: none;
+            border-radius: 5px;
+            transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+        }
+
+        input,
+        select,
+        button {
+            margin: 0;
+            font-family: inherit;
+        }
+
+        .form-select {
+            display: block;
+            width: 100%;
+            padding: 0.375rem 2.25rem 0.375rem 0.75rem;
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.5;
+            color: #666565;
+            background-color: #fff;
+            background-repeat: no-repeat;
+            background-position: right 0.75rem center;
+            background-size: 16px 12px;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            appearance: none;
+        }
+
+        select {
+            word-wrap: normal;
+            text-transform: none;
+        }
+
+        @media (min-width: 768px) {
+            .col-md-2 {
+                flex: 0 0 auto;
+                width: 16.66667%;
+            }
+        }
+
+        .sch {
+            padding-top: 1rem !important;
+            padding-bottom: 1rem !important;
+            width: 100% !important;
+            border: 0 !important;
+            color: #fff;
+            background-color: #0E2E50;
+            display: inline-block;
+            font-weight: 400;
+            line-height: 1.5;
+            text-align: center;
+            vertical-align: middle;
+            user-select: none;
+            padding: 0.375rem 0.75rem;
+            font-size: 1rem;
+            border-radius: 5px;
+        }
+
+        /*Search CSS End*/
+
+        /*Category CSS Start*/
+
+        .cate {
+            padding-top: 3rem !important;
+            padding-bottom: 3rem !important;
+            width: 100%;
+            padding-right: var(--bs-gutter-x, .75rem);
+            padding-left: var(--bs-gutter-x, .75rem);
+            margin-right: auto;
+            margin-left: auto;
+        }
+
+        .prop {
+            max-width: 600px;
+            visibility: visible;
+            animation-delay: 0.1s;
+            animation-name: fadeInUp;
+            text-align: center !important;
+            margin-bottom: 3rem !important;
+            margin-right: auto !important;
+            margin-left: auto !important;
+        }
+
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translate3d(0, 100%, 0);
+            }
+
+            100% {
+                opacity: 1;
+                transform: none;
+            }
+        }
+
+        .typ {
+            margin-bottom: 1rem !important;
+        }
+
+        .g-4 {
+            --bs-gutter-y: 1.5rem;
+            --bs-gutter-x: 1.5rem;
+        }
+
+        .apar {
+            visibility: visible;
+            animation-name: fadeInUp;
+        }
+
+        @media (min-width: 992px) {
+            .col-lg-3 {
+                flex: 0 0 auto;
+                width: 25%;
+            }
+        }
+
+        /*@media (min-width: 576px) {
+            .col-sm-6 {
+                flex: 0 0 auto;
+                width: 50%;
+            }
+        }*/
+
+        .cat-item {
+            border-radius: 5px !important;
+            background-color: #EFFDF5 !important;
+            text-align: center !important;
+            padding: 1rem !important;
+            display: block !important;
+            color: #00B98E;
+            text-decoration: none;
+        }
+
+        .cat-item div {
+            background: #FFFFFF;
+            border: 1px dashed rgba(0, 185, 142, .3);
+            transition: .5s;
+        }
+
+        .cat-item:hover div {
+            background: #00B98E;
+            border-color: transparent;
+        }
+
+        .ment {
+            border-radius: 5px !important;
+            padding: 1.5rem !important;
+        }
+
+        .cat-item div * {
+            transition: .5s;
+        }
+
+        .cat-item:hover div * {
+            color: #FFFFFF !important;
+        }
+
+        .tie {
+            margin-bottom: 1rem !important;
+        }
+
+        h6 {
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+            font-family: "Inter", sans-serif;
+            font-weight: 700;
+            line-height: 1.2;
+            color: #0E2E50;
+            font-size: 1rem;
+        }
+
+        /*Category CSS End*/
+
+        /*About CSS Start*/
+
+        .sed {
+            padding-top: 3rem !important;
+            padding-bottom: 3rem !important;
+            width: 100%;
+            padding-right: var(--bs-gutter-x, .75rem);
+            padding-left: var(--bs-gutter-x, .75rem);
+            margin-right: auto;
+            margin-left: auto;
+        }
+
+        .tem {
+            align-items: center !important;
+        }
+
+        .g-5 {
+            --bs-gutter-y: 3rem;
+            --bs-gutter-x: 3rem;
+        }
+
+        .fin {
+            visibility: visible;
+            animation-delay: 0.1s;
+            animation-name: fadeIn;
+        }
+
+        @media (min-width: 992px) {
+            .col-lg-6 {
+                flex: 0 0 auto;
+                width: 50%;
+            }
+        }
+
+        .der {
+            padding-right: 0 !important;
+            padding: 3rem !important;
+            position: relative !important;
+            overflow: hidden !important;
+        }
+
+        .about-img::before {
+            position: absolute;
+            content: "";
+            top: 0;
+            left: -50%;
+            width: 100%;
+            height: 100%;
+            background: #00B98E;
+            transform: skew(20deg);
+            z-index: 1;
+        }
+
+        .about-img img {
+            position: relative;
+            z-index: 2;
+        }
+
+        .ho {
+            width: 100% !important;
+        }
+
+        .de {
+            visibility: visible;
+            animation-delay: 0.5s;
+            animation-name: fadeIn;
+        }
+
+        .the {
+            margin-bottom: 1.5rem !important;
+        }
+
+        .erat {
+            margin-bottom: 1.5rem !important;
+        }
+
+        .tempo {
+            margin-right: 1rem !important;
+        }
+
+        .fa {
+            font-weight: 900;
+            font-family: "Font Awesome 5 Free";
+            -webkit-font-smoothing: antialiased;
+            display: inline-block;
+            font-style: normal;
+            font-variant: normal;
+            text-rendering: auto;
+            line-height: 1;
+        }
+
+        .fa-check:before {
+            content: "\f00c";
+        }
+
+        .rea {
+            padding-top: 1rem !important;
+            padding-bottom: 1rem !important;
+            padding-right: 3rem !important;
+            padding-left: 3rem !important;
+            margin-top: 1rem !important;
+            display: inline-block;
+            font-weight: 400;
+            line-height: 1.5;
+            text-align: center;
+            vertical-align: middle;
+            cursor: pointer;
+            user-select: none;
+            border: 1px solid transparent;
+            font-size: 1rem;
+            border-radius: 5px;
+        }
+
+        .rea:hover {
+            background-color: #00B98E;
+            border-color: #00B98E;
+        }
+
+        /* About CSS End*/
+
+        /*Property List CSS Start*/
+
+        .sit {
+            align-items: flex-end !important;
+        }
+
+        .gx-5 {
+            --bs-gutter-x: 3rem;
+        }
+
+        .g-0 {
+            --bs-gutter-y: 0;
+        }
+
+        .tin {
+            visibility: visible;
+            animation-delay: 0.1s;
+            animation-name: slideInLeft;
+        }
+
+        .ing {
+            text-align: left !important;
+            margin-bottom: 3rem !important;
+            margin-right: auto !important;
+            margin-left: auto !important;
+        }
+
+        @keyframes slideInLeft {
+            0% {
+                transform: translate3d(-100%, 0, 0);
+                visibility: visible;
+            }
+
+            100% {
+                transform: translateZ(0);
+            }
+        }
+
+        .lis {
+            margin-bottom: 1rem !important;
+        }
+
+        @media (min-width: 992px) {
+            .text-lg-end {
+                text-align: right !important;
+            }
+        }
+
+        /*.text-start {
+            text-align: left !important;
+        }*/
+
+        .fea {
+            margin-bottom: 3rem !important;
+            justify-content: flex-end !important;
+            display: inline-flex !important;
+            flex-wrap: wrap;
+            padding-left: 0;
+            list-style: none;
+        }
+
+        ul {
+            margin-top: 0;
+        }
+
+        .tur {
+            margin-right: 0.5rem !important;
+        }
+
+        .nav-pills .nav-item .btn:hover,
+        .nav-pills .nav-item .btn.active {
+            color: #FFFFFF;
+        }
+
+        .btn-outline-primary.active {
+            background-color: #00B98E;
+            border-color: #00B98E;
+        }
+
+        .but {
+            display: inline-block;
+            font-weight: 400;
+            line-height: 1.5;
+            text-align: center;
+            vertical-align: middle;
+            cursor: pointer;
+            user-select: none;
+            border: 1px solid transparent;
+            padding: 0.375rem 0.75rem;
+            font-size: 1rem;
+            border-radius: 5px;
+        }
+
+        .nav-pills .nav-item .btn {
+            color: #0E2E50;
+        }
+
+        .btn-outline-primary {
+            border-color: #00B98E !important;
+        }
+
+        .ton {
+            display: inline-block;
+            font-weight: 400;
+            line-height: 1.5;
+            text-align: center;
+            vertical-align: middle;
+            cursor: pointer;
+            user-select: none;
+            border: 1px solid transparent;
+            background-color: transparent;
+            padding: 0.375rem 0.75rem;
+            font-size: 1rem;
+            border-radius: 5px;
+        }
+
+        .ren {
+            margin-right: 0 !important;
+        }
+
+        .ton:hover {
+            background-color: #00B98E;
+        }
+
+        .tab-content>.active {
+            display: block;
+        }
+
+        .tb {
+            padding: 0 !important;
+        }
+
+        .fade {
+            transition: 0.15s linear;
+        }
+
+        .g-4 {
+            --bs-gutter-y: 1.5rem;
+            --bs-gutter-x: 1.5rem;
+        }
+
+        .stee {
+            visibility: visible;
+            animation-delay: 0.1s;
+            animation-name: fadeInUp;
+        }
+
+        @media (min-width: 992px) {
+            .col-lg-4 {
+                flex: 0 0 auto;
+                width: 33.33333%;
+            }
+        }
+
+        .property-item {
+            box-shadow: 0 0 30px rgba(0, 0, 0, .08);
+        }
+
+        .vi {
+            border-radius: 5px !important;
+            overflow: hidden !important;
+        }
+
+        .lla {
+            position: relative !important;
+            overflow: hidden !important;
+        }
+
+        a {
+            color: #00B98E;
+            text-decoration: none;
+        }
+
+        .property-item img {
+            transition: .5s;
+        }
+
+        .property-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .sell {
+            border-radius: 5px !important;
+            background-color: #00B98E !important;
+            color: #fff !important;
+            padding-top: 0.25rem !important;
+            padding-bottom: 0.25rem !important;
+            padding-right: 1rem !important;
+            padding-left: 1rem !important;
+            margin: 1.5rem !important;
+            left: 0 !important;
+            top: 0 !important;
+            position: absolute !important;
+        }
+
+        .appart {
+            background-color: #fff !important;
+            border-top-left-radius: 5px !important;
+            border-top-right-radius: 5px !important;
+            padding-top: 0.25rem !important;
+            padding-right: 1rem !important;
+            padding-left: 1rem !important;
+            margin-right: 1.5rem !important;
+            margin-left: 1.5rem !important;
+            left: 0 !important;
+            bottom: 0 !important;
+            position: absolute !important;
+        }
+
+        .urb {
+            padding-bottom: 0 !important;
+            padding: 1.5rem !important;
+        }
+
+        .bane {
+            margin-bottom: 1rem !important;
+            font-size: 1.25rem;
+            margin-top: 0;
+            font-family: "Inter", sans-serif;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .gold {
+            margin-bottom: 0.5rem !important;
+            display: block !important;
+            margin-top: 0;
+            font-family: "Inter", sans-serif;
+            font-weight: 700;
+            line-height: 1.2;
+            color: #0E2E50;
+        }
+
+        .gold:hover {
+            color: #00B98E;
+        }
+
+        .fa-map-marker-alt:before {
+            content: "\f3c5";
+        }
+
+        .property-item .bed {
+            border-top: 1px dashed rgba(0, 185, 142, .3) !important;
+        }
+
+        .bed {
+            display: flex !important;
+        }
+
+        .property-item .sqt {
+            border-right: 1px dashed rgba(0, 185, 142, .3) !important;
+        }
+
+        .sqt {
+            text-align: center !important;
+            padding-top: 0.5rem !important;
+            padding-bottom: 0.5rem !important;
+        }
+
+        .flex-fill {
+            flex: 1 1 auto !important;
+        }
+
+        small {
+            font-size: .875em;
+        }
+
+        .fa-ruler-combined:before {
+            content: "\f546";
+        }
+
+        .fa-bed:before {
+            content: "\f236";
+        }
+
+        .fa-bath:before {
+            content: "\f2cd";
+        }
+
+        .col-12 {
+            flex: 0 0 auto;
+            width: 100%;
+            text-align: center !important;
+        }
+
+        .mor {
+            padding-top: 1rem !important;
+            padding-bottom: 1rem !important;
+            padding-right: 3rem !important;
+            padding-left: 3rem !important;
+            display: inline-block;
+            font-weight: 400;
+            line-height: 1.5;
+            text-align: center;
+            vertical-align: middle;
+            cursor: pointer;
+            user-select: none;
+            border: 1px solid transparent;
+            font-size: 1rem;
+            border-radius: 5px;
+        }
+
+        .mor:hover {
+            background-color: #00B98E;
+            border-color: #00B98E;
+        }
+
+        /*Property List CSS Start*/
+
+        /*Call to Action CSS Start*/
+
+        .call {
+            border-radius: 5px !important;
+            background-color: #EFFDF5 !important;
+            padding: 1rem !important;
+        }
+
+        .our {
+            border: 1px dashed rgba(0, 185, 142, .3);
+            border-radius: 5px !important;
+            background-color: #fff !important;
+            padding: 1.5rem !important;
+        }
+
+        .agen {
+            align-items: center !important;
+        }
+
+        .g-5 {
+            --bs-gutter-y: 3rem;
+            --bs-gutter-x: 3rem;
+        }
+
+        .wit {
+            visibility: visible;
+            animation-delay: 0.1s;
+            animation-name: fadeIn;
+        }
+
+        .eye {
+            border-radius: 5px !important;
+            width: 100% !important;
+        }
+
+        .th {
+            visibility: visible;
+            animation-delay: 0.5s;
+            animation-name: fadeIn;
+        }
+
+        .tac {
+            margin-bottom: 1.5rem !important;
+        }
+
+        .con {
+            margin-bottom: 1rem !important;
+        }
+
+        .magn {
+            padding-top: 1rem !important;
+            padding-bottom: 1rem !important;
+            padding-right: 1.5rem !important;
+            padding-left: 1.5rem !important;
+            margin-right: 0.5rem !important;
+            display: inline-block;
+            font-weight: 400;
+            line-height: 1.5;
+            text-align: center;
+            vertical-align: middle;
+            cursor: pointer;
+            user-select: none;
+            border: 1px solid transparent;
+            font-size: 1rem;
+            border-radius: 5px;
+        }
+
+        .fa-phone-alt::before {
+            content: "\f879";
+        }
+
+        .btn-dark {
+            color: #fff;
+            background-color: #0E2E50;
+            border-color: #0E2E50;
+        }
+
+        .fa-calendar-alt:before {
+            content: "\f073";
+        }
+
+        .make:hover {
+            background-color: #00B98E;
+            border-color: #00B98E;
+        }
+
+        /*Call to Action CSS End*/
+
+        /*Team CSS Start*/
+
+        .nts {
+            max-width: 600px;
+            visibility: visible;
+            animation-delay: 0.1s;
+            animation-name: fadeInUp;
+            text-align: center !important;
+            margin-bottom: 3rem !important;
+            margin-right: auto !important;
+            margin-left: auto !important;
+        }
+
+        .visi {
+            visibility: visible;
+            animation-name: fadeInUp;
+        }
+
+        .ani {
+            animation-delay: 0.1s;
+        }
+
+        @media (min-width: 992px) {
+            .col-lg-3 {
+                flex: 0 0 auto;
+                width: 25%;
+            }
+        }
+
+        .team-item {
+            box-shadow: 0 0 30px rgba(0, 0, 0, .08);
+            transition: .5s;
+        }
+
+        .tea {
+            border-radius: 5px !important;
+            overflow: hidden !important;
+        }
+
+        .am {
+            position: relative !important;
+        }
+
+        .fac {
+            align-items: center !important;
+            transform: translate(-50%, -50%) !important;
+            left: 50% !important;
+            top: 100% !important;
+            position: absolute !important;
+            display: flex !important;
+        }
+
+        .btn-square {
+            width: 38px;
+            height: 38px;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: normal;
+            border-radius: 50px;
+            line-height: 1.5;
+            text-align: center;
+            vertical-align: middle;
+            cursor: pointer;
+            user-select: none;
+            border: 1px solid transparent;
+            font-size: 1rem;
+        }
+
+        .team-item .btn {
+            color: #00B98E;
+            background: #FFFFFF;
+            box-shadow: 0 0 30px rgba(0, 0, 0, .15);
+        }
+
+        .twit {
+            margin-right: 0.25rem !important;
+            margin-left: 0.25rem !important;
+        }
+
+        .fab {
+            font-family: "Font Awesome 5 Brands";
+            -webkit-font-smoothing: antialiased;
+            display: inline-block;
+            font-style: normal;
+            font-variant: normal;
+            text-rendering: auto;
+            line-height: 1;
+        }
+
+        .fa-facebook-f:before {
+            content: "\f39e";
+        }
+
+        .fa-twitter:before {
+            content: "\f099";
+        }
+
+        .fa-instagram:before {
+            content: "\f16d";
+        }
+
+        .fulna {
+            text-align: center !important;
+            padding: 1.5rem !important;
+            margin-top: 1rem !important;
+        }
+
+        .des {
+            font-weight: 700 !important;
+            margin-bottom: 0 !important;
+            font-size: 1.25rem;
+            margin-top: 0;
+            font-family: "Inter", sans-serif;
+            line-height: 1.2;
+            color: #0E2E50;
+        }
+
+        .team-item .btn:hover {
+            color: #FFFFFF;
+            background: #00B98E;
+        }
+
+        .team-item:hover {
+            border-color: #0E2E50 !important;
+        }
+
+        /*Team CSS End*/
+
+        /*Testimonial CSS Start*/
+
+        .testimonial-carousel {
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+        }
+
+        @media (min-width: 576px) {
+            .testimonial-carousel {
+                padding-left: 4rem;
+                padding-right: 4rem;
+            }
+        }
+
+        .owl-carousel .owl-stage-outer {
+            position: relative;
+            overflow: hidden;
+            transform: translate3d(0, 0, 0);
+        }
+
+        .dia {
+            margin-right: 24px;
+
+        }
+
+        .cli {
+            align-items: center !important;
+            display: flex !important;
+        }
+
+        .ent {
+            width: 45px;
+            width: 45px;
+            border-radius: 5px !important;
+            flex-shrink: 0 !important;
+        }
+
+        .prof {
+            padding-left: 1rem !important;
+        }
+
+        .sion {
+            font-weight: 700 !important;
+            margin-bottom: 0.25rem !important;
+            font-size: 1rem;
+            margin-top: 0;
+            font-family: "Inter", sans-serif;
+            line-height: 1.2;
+            color: #0E2E50;
+        }
+
+        .testimonial-carousel .testimonial-item .our {
+            border: 1px dashed rgba(0, 185, 142, .3) !important;
+        }
+
+        .testimonial-carousel .owl-nav {
+            position: absolute;
+            width: 100%;
+            height: 40px;
+            top: calc(50% - 20px);
+            left: 0;
+            display: flex;
+            justify-content: space-between;
+            z-index: 1;
+        }
+
+        .owl-carousel.owl-loaded {
+            display: block;
+        }
+
+        .owl-carousel .owl-item img {
+            display: block;
+        }
+
+        .testimonial-carousel .owl-nav .owl-prev,
+        .testimonial-carousel .owl-nav .owl-next {
+            position: relative;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #FFFFFF;
+            background: #00B98E;
+            border-radius: 40px;
+            font-size: 20px;
+            transition: .5s;
+        }
+
+        .testimonial-carousel .owl-nav .owl-prev:hover,
+        .testimonial-carousel .owl-nav .owl-next:hover {
+            background: #0E2E50;
+        }
+
+        .owl-carousel.owl-drag.owl-item {
+            user-select: none;
+        }
+
+        .owl-carousel.owl-item {
+            min-height: 1px;
+            float: left;
+            backface-visibility: hidden;
+            transform: translate3d(0, 0, 0);
+        }
+
+        .owl-carousel.owl-stage {
+            position: relative;
+        }
+
+        .owl-carousel .owl-item {
+            -webkit-tap-highlight-color: transparent;
+            position: relative;
+        }
+
+        /*Testimonial CSS End*/
+
+        /*Footer CSS Start*/
+
+        .fo{
+            background-color: #0E2E50 !important;
+            color: rgba(255, 255, 255, 0.5) !important;
+            padding-top: 3rem !important;
+            margin-top: 3rem !important;
+        }
+        .tou{
+            color: #fff !important;
+            margin-bottom: 1.5rem !important;
+            font-size: 1.25rem;
+            margin-top: 0;
+            font-family: "Inter",sans-serif;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+        .eet{
+            margin-bottom: 0.5rem !important;
+        }
+        .yor{
+            margin-right: 1rem !important;
+        }
+        .fa-map-marker-alt:before {
+            content: "\f3c5";
+        }
+        .fa-phone-alt:before {
+            content: "\f879";
+        }
+        .fa-envelope:before {
+            content: "\f0e0";
+        }
+        .tw{
+            padding-top: 0.5rem !important;
+            display: flex !important;
+        }
+        .footer .btn.btn-social {
+            margin-right: 5px;
+            width: 35px;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #EFFDF5;
+            border: 1px solid rgba(255,255,255,0.5);
+            border-radius: 35px;
+            transition: .3s;
+        }
+        .footer .btn.btn-social:hover {
+            color: #00B98E;
+            border-color: #EFFDF5;
+        }
+        .lin{
+            font-weight: 400;
+            line-height: 1.5;
+            text-align: center;
+            vertical-align: middle;
+            cursor: pointer;
+            user-select: none;
+            background-color: transparent;
+            padding: 0.375rem 0.75rem;
+            font-size: 1rem;
+        }
+        .fa-twitter:before {
+            content: "\f099";
+        }
+        .fa-facebook-f:before {
+            content: "\f39e";
+        }
+        .fa-youtube:before {
+            content: "\f167";
+        }
+        .fa-linkedin-in:before {
+            content: "\f0e1";
+        }
+        .footer .btn.btn-link {
+            display: block;
+            margin-bottom: 5px;
+            padding: 0;
+            text-align: left;
+            font-size: 15px;
+            font-weight: normal;
+            text-transform: capitalize;
+            transition: .3s;
+        }
+        .quik{
+            color: rgba(255, 255, 255, 0.5) !important;
+            text-decoration: none;
+            line-height: 1.5;
+            vertical-align: middle;
+            cursor: pointer;
+            user-select: none;
+            background-color: transparent;
+            border: 1px solid transparent;
+            border-radius: 5px;
+        }
+        .footer .btn.btn-link::before {
+            position: relative;
+            content: "\f105";
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            margin-right: 10px;
+        }
+        .footer .btn.btn-link:hover {
+            letter-spacing: 1px;
+            box-shadow: none;
+        }
+        .gall{
+            padding-top: 0.5rem !important;
+        }
+        .col-4 {
+            flex: 0 0 auto;
+            width: 33.33333%;
+        }
+        .pho{
+            border-radius: 5px !important;
+            background-color: #EFFDF5 !important;
+            padding: 0.25rem !important;
+        }
+        .news{
+            max-width: 400px;
+            margin-right: auto !important;
+            margin-left: auto !important;
+            position: relative !important;
+        }
+        .footer .form-control {
+            border-color: rgba(255,255,255,0.5);
+        }
+        .lette{
+            background-color: rgba(0, 0, 0, 0) !important;
+            padding-left: 1.5rem !important;
+            padding-right: 3rem !important;
+            padding-top: 1rem !important;
+            padding-bottom: 1rem !important;
+            width: 100% !important;
+        }
+        .form-control{
+            display: block;
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.5;
+            background-clip: padding-box;
+            border: 1px solid #ced4da;
+            appearance: none;
+            border-radius: 5px;
+            transition: border-color 0.15s ease-in-out,box-shadow 0.15s ease-in-out;       
+        }
+        .sign{
+            padding-top: 0.5rem !important;
+            padding-bottom: 0.5rem !important;
+            margin-right: 0.5rem !important;
+            margin-top: 0.5rem !important;
+            right: 0 !important;
+            top: 0 !important;
+            position: absolute !important;
+            display: inline-block;
+            font-weight: 400;
+            line-height: 1.5;
+            text-align: center;
+            vertical-align: middle;
+            user-select: none;
+            border: 1px solid transparent;
+            padding: 0.375rem 0.75rem;
+            font-size: 1rem;
+            border-radius: 5px;
+            background-color: #00B98E;
+            border-color: #00B98E;
+            color: #EFFDF5;
+        }
+        .sign:hover{
+            background-color: #00B98E;
+            border-color: #00B98E;
+            color: #EFFDF5;
+        }
+        
+
+
+    </style>
+</head>
+
+<body>
+    <div class="container-xxl str">
+
+        <!-- Spinner Start -->
+
+        <div id="spinner" class="show spi">
+            <div class="spinner-border text-primary" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+
+        <!-- Spinner End -->
+
+        <!-- Navbar Start -->
+
+        <div class="container-fluid nav-bar">
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <a href="index.html" class="navbar-brand">
+                    <div class="icon mak">
+                        <img class="img-fluid" src="https://themewagon.github.io/makan/img/icon-deal.png" alt="Icon">
+                    </div>
+                    <h1 class="ghar text-primary">GHAR</h1>
+                </a>
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <div class="navbar-nav">
+                        <a href="index.html" class="nav-item nav-link active">Home</a>
+                        <a href="about.html" class="nav-item nav-link">About</a>
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Property</a>
+                            <div class="dropdown-menu">
+                                <a href="property-list.html" class="dropdown-item">Property List</a>
+                                <a href="property-type.html" class="dropdown-item">Property Type</a>
+                                <a href="property-agent.html" class="dropdown-item">Property Agent</a>
+                            </div>
+                        </div>
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
+                            <div class="dropdown-menu">
+                                <a href="testimonial.html" class="dropdown-item">Testimonial</a>
+                                <a href="404.html" class="dropdown-item">404 Error</a>
+                            </div>
+                        </div>
+                        <a href="contact.html" class="nav-item nav-link">Contact</a>
+                    </div>
+                    <a href="" class="btn btn-primary property">Add Property</a>
+                </div>
+            </nav>
+        </div>
+
+        <!-- Navbar End -->
+
+        <!-- Header Start -->
+
+        <div class="container-fluid header">
+            <div class="row">
+                <div class="col-md-6 mt-lg-5 find">
+                    <h1 class="display-5 animated fadeIn">Find A <span class="text-primary">Perfect Home</span> To
+                        Live With Your Family</h1>
+                    <p class="animated fadeIn vero">Vero elitr justo clita lorem. Ipsum dolor at sed stet
+                        sit diam no. Kasd rebum ipsum et diam justo clita et kasd rebum sea elitr.</p>
+                    <a href="" class="btn btn-primary get animated fadeIn">Get Started</a>
+                </div>
+                <div class="col-md-6 animated fadeIn">
+                    <div class="owl-carousel header-carousel owl-loaded owl-drag">
+
+
+                        <div class="owl-stage-outer">
+                            <div class="owl-stage">
+                                <!-- <div class="owl-item cloned" style="width: 220px;">
+                                    <div class="owl-carousel-item">
+                                        <img class="img-fluid" src="https://themewagon.github.io/makan/img/carousel-1.jpg" alt="">
+                                    </div>
+                                </div>
+                                <div class="owl-item cloned" style="width: 220px;">
+                                    <div class="owl-carousel-item">
+                                        <img class="img-fluid" src="img/carousel-2.jpg" alt="">
+                                    </div>
+                                </div> -->
+                                <div class="owl-item active" style="width: 620.5px;">
+                                    <div class="owl-carousel-item">
+                                        <img class="img-fluid"
+                                            src="https://themewagon.github.io/makan/img/carousel-1.jpg" alt="">
+                                    </div>
+                                </div>
+                                <!-- <div class="owl-item" style="width: 620.5px;">
+                                    <div class="owl-carousel-item">
+                                        <img class="img-fluid" src="https://themewagon.github.io/makan/img/carousel-2.jpg" alt="">
+                                    </div>
+                                </div> -->
+                                <!--<div class="owl-item cloned" style="width: 220px;">
+                                    <div class="owl-carousel-item">
+                                        <img class="img-fluid" src="https://themewagon.github.io/makan/img/carousel-1.jpg" alt="">
+                                    </div>
+                                </div>
+                                <div class="owl-item cloned" style="width: 220px;">
+                                    <div class="owl-carousel-item">
+                                        <img class="img-fluid" src="img/carousel-2.jpg" alt="">
+                                    </div>
+                                </div> -->
+                            </div>
+                        </div>
+                        <div class="owl-nav">
+                            <div class="owl-prev"><i class="bi bi-chevron-left"></i></div>
+                            <div class="owl-next"><i class="bi bi-chevron-right"></i></div>
+                        </div>
+                        <div class="owl-dots">
+                            <div class="owl-dot active"><span></span></div>
+                            <div class="owl-dot"><span></span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Header End -->
+
+        <!-- Search Start -->
+
+        <div class="container-fluid wow fadeIn searchy" data-wow-delay="0.1s">
+            <div class="container">
+                <div class="row g-2">
+                    <div class="col-md-10">
+                        <div class="row g-2">
+                            <div class="col-md-4">
+                                <input type="text" class="form-control key" placeholder="Search Keyword">
+                            </div>
+                            <div class="col-md-4">
+                                <select class="form-select key">
+                                    <option selected="">Property Type</option>
+                                    <option value="1">Property Type 1</option>
+                                    <option value="2">Property Type 2</option>
+                                    <option value="3">Property Type 3</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <select class="form-select border-0 py-3">
+                                    <option selected="">Location</option>
+                                    <option value="1">Location 1</option>
+                                    <option value="2">Location 2</option>
+                                    <option value="3">Location 3</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <button class="btn btn-dark sch">Search</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Search End -->
+
+        <!-- Category Start -->
+
+        <div class="container-xxl cate">
+            <div class="container">
+                <div class="prop wow fadeInUp" data-wow-delay="0.1s">
+                    <h1 class="typ">Property Types</h1>
+                    <p>Eirmod sed ipsum dolor sit rebum labore magna erat. Tempor ut dolore lorem kasd vero ipsum sit
+                        eirmod sit. Ipsum diam justo sed rebum vero dolor duo.</p>
+                </div>
+                <div class="row g-4">
+                    <div class="col-lg-3 col-sm-6 wow fadeInUp apar" data-wow-delay="0.1s"
+                        style="animation-delay: 0.1s;">
+                        <a class="cat-item" href="">
+                            <div class="ment">
+                                <div class="icon tie">
+                                    <img class="img-fluid"
+                                        src="https://themewagon.github.io/makan/img/icon-apartment.png" alt="Icon">
+                                </div>
+                                <h6>Apartment</h6>
+                                <span class="per">123 Properties</span>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-lg-3 col-sm-6 wow fadeInUp apar" data-wow-delay="0.3s"
+                        style="animation-delay: 0.3s;">
+                        <a class="cat-item" href="">
+                            <div class="ment">
+                                <div class="icon tie">
+                                    <img class="img-fluid" src="https://themewagon.github.io/makan/img/icon-villa.png"
+                                        alt="Icon">
+                                </div>
+                                <h6>Villa</h6>
+                                <span class="per">123 Properties</span>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-lg-3 col-sm-6 wow fadeInUp apar" data-wow-delay="0.5s"
+                        style="animation-delay: 0.5s;">
+                        <a class="cat-item" href="">
+                            <div class="ment">
+                                <div class="icon tie">
+                                    <img class="img-fluid" src="https://themewagon.github.io/makan/img/icon-house.png"
+                                        alt="Icon">
+                                </div>
+                                <h6>Home</h6>
+                                <span class="per">123 Properties</span>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-lg-3 col-sm-6 wow fadeInUp apar" data-wow-delay="0.7s"
+                        style="animation-delay: 0.7s;">
+                        <a class="cat-item" href="">
+                            <div class="ment">
+                                <div class="icon tie">
+                                    <img class="img-fluid" src="https://themewagon.github.io/makan/img/icon-housing.png"
+                                        alt="Icon">
+                                </div>
+                                <h6>Office</h6>
+                                <span class="per">123 Properties</span>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-lg-3 col-sm-6 wow fadeInUp apar" data-wow-delay="0.1s"
+                        style="animation-delay: 0.1s;">
+                        <a class="cat-item" href="">
+                            <div class="ment">
+                                <div class="icon tie">
+                                    <img class="img-fluid"
+                                        src="https://themewagon.github.io/makan/img/icon-building.png" alt="Icon">
+                                </div>
+                                <h6>Building</h6>
+                                <span class="per">123 Properties</span>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-lg-3 col-sm-6 wow fadeInUp apar" data-wow-delay="0.3s"
+                        style="animation-delay: 0.3s;">
+                        <a class="cat-item" href="">
+                            <div class="ment">
+                                <div class="icon tie">
+                                    <img class="img-fluid"
+                                        src="https://themewagon.github.io/makan/img/icon-neighborhood.png" alt="Icon">
+                                </div>
+                                <h6>Townhouse</h6>
+                                <span class="per">123 Properties</span>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-lg-3 col-sm-6 wow fadeInUp apar" data-wow-delay="0.5s"
+                        style="animation-delay: 0.5s;">
+                        <a class="cat-item" href="">
+                            <div class="ment">
+                                <div class="icon tie">
+                                    <img class="img-fluid"
+                                        src="https://themewagon.github.io/makan/img/icon-condominium.png" alt="Icon">
+                                </div>
+                                <h6>Shop</h6>
+                                <span class="per">123 Properties</span>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-lg-3 col-sm-6 wow fadeInUp apar" data-wow-delay="0.7s"
+                        style="animation-delay: 0.7s;">
+                        <a class="cat-item" href="">
+                            <div class="ment">
+                                <div class="icon tie">
+                                    <img class="img-fluid" src="https://themewagon.github.io/makan/img/icon-luxury.png"
+                                        alt="Icon">
+                                </div>
+                                <h6>Garage</h6>
+                                <span class="per">123 Properties</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Category End -->
+
+        <!-- About Start -->
+
+        <div class="container-xxl sed">
+            <div class="container">
+                <div class="row g-5 tem">
+                    <div class="col-lg-6 wow fadeIn fin" data-wow-delay="0.1s">
+                        <div class="about-img der">
+                            <img class="img-fluid ho" src="https://themewagon.github.io/makan/img/about.jpg">
+                        </div>
+                    </div>
+                    <div class="col-lg-6 wow fadeIn de" data-wow-delay="0.5s">
+                        <h1 class="the">#1 Place To Find The Perfect Property</h1>
+                        <p class="erat">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet
+                            diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna
+                            dolore erat amet</p>
+                        <p><i class="fa fa-check text-primary tempo"></i>Tempor erat elitr rebum at clita</p>
+                        <p><i class="fa fa-check text-primary tempo"></i>Aliqu diam amet diam et eos</p>
+                        <p><i class="fa fa-check text-primary tempo"></i>Clita duo justo magna dolore erat amet</p>
+                        <a class="btn btn-primary rea" href="">Read More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- About End -->
+
+        <!-- Property List Start -->
+
+        <div class="container-xxl sed">
+            <div class="container">
+                <div class="row g-0 gx-5 sit">
+                    <div class="col-lg-6">
+                        <div class="tin ing wow slideInLeft" data-wow-delay="0.1s">
+                            <h1 class="lis">Property Listing</h1>
+                            <p>Eirmod sed ipsum dolor sit rebum labore magna erat. Tempor ut dolore lorem kasd vero
+                                ipsum sit eirmod sit diam justo sed rebum.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 text-start text-lg-end wow slideInRight tin" data-wow-delay="0.1s">
+                        <ul class="nav nav-pills fea">
+                            <li class="nav-item tur">
+                                <a class="btn btn-outline-primary active but" data-bs-toggle="pill"
+                                    href="#tab-1">Featured</a>
+                            </li>
+                            <li class="nav-item tur">
+                                <a class="btn btn-outline-primary ton" data-bs-toggle="pill" href="#tab-2">For Sell</a>
+                            </li>
+                            <li class="nav-item ren">
+                                <a class="btn btn-outline-primary ton" data-bs-toggle="pill" href="#tab-3">For Rent</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="tab-content">
+                    <div id="tab-1" class="tab-pane fade show active tb">
+                        <div class="row g-4">
+                            <div class="col-lg-4 col-md-6 wow fadeInUp stee" data-wow-delay="0.1s">
+                                <div class="property-item vi">
+                                    <div class="lla">
+                                        <a href=""><img class="img-fluid"
+                                                src="https://themewagon.github.io/makan/img/property-1.jpg" alt=""></a>
+                                        <div class="sell">For Sell</div>
+                                        <div class="text-primary appart">Appartment</div>
+                                    </div>
+                                    <div class="urb">
+                                        <h5 class="text-primary bane">$12,345</h5>
+                                        <a class="gold" href="">Golden Urban House For Sell</a>
+                                        <p><i class="fa fa-map-marker-alt text-primary tur"></i>123 Street, New York,
+                                            USA</p>
+                                    </div>
+                                    <div class="bed">
+                                        <small class="flex-fill sqt"><i
+                                                class="fa fa-ruler-combined text-primary tur"></i>1000 Sqft</small>
+                                        <small class="flex-fill sqt"><i class="fa fa-bed text-primary tur"></i>3
+                                            Bed</small>
+                                        <small class="flex-fill sqt"><i class="fa fa-bath text-primary tur"></i>2
+                                            Bath</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 wow fadeInUp stee" data-wow-delay="0.3s"
+                                style="animation-delay: 0.3s;">
+                                <div class="property-item vi">
+                                    <div class="lla">
+                                        <a href=""><img class="img-fluid"
+                                                src="https://themewagon.github.io/makan/img/property-2.jpg" alt=""></a>
+                                        <div class="sell">For Rent</div>
+                                        <div class="text-primary appart">Villa</div>
+                                    </div>
+                                    <div class="urb">
+                                        <h5 class="text-primary bane">$12,345</h5>
+                                        <a class="gold" href="">Golden Urban House For Sell</a>
+                                        <p><i class="fa fa-map-marker-alt text-primary tur"></i>123 Street, New York,
+                                            USA</p>
+                                    </div>
+                                    <div class="bed">
+                                        <small class="flex-fill sqt"><i
+                                                class="fa fa-ruler-combined text-primary tur"></i>1000 Sqft</small>
+                                        <small class="flex-fill sqt"><i class="fa fa-bed text-primary tur"></i>3
+                                            Bed</small>
+                                        <small class="flex-fill sqt"><i class="fa fa-bath text-primary tur"></i>2
+                                            Bath</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 wow fadeInUp stee" data-wow-delay="0.5s"
+                                style="animation-delay: 0.5s;">
+                                <div class="property-item vi">
+                                    <div class="lla">
+                                        <a href=""><img class="img-fluid"
+                                                src="https://themewagon.github.io/makan/img/property-3.jpg" alt=""></a>
+                                        <div class="sell">For Sell</div>
+                                        <div class="text-primary appart">Office</div>
+                                    </div>
+                                    <div class="urb">
+                                        <h5 class="text-primary bane">$12,345</h5>
+                                        <a class="gold" href="">Golden Urban House For Sell</a>
+                                        <p><i class="fa fa-map-marker-alt text-primary tur"></i>123 Street, New York,
+                                            USA</p>
+                                    </div>
+                                    <div class="bed">
+                                        <small class="flex-fill sqt"><i
+                                                class="fa fa-ruler-combined text-primary tur"></i>1000 Sqft</small>
+                                        <small class="flex-fill sqt"><i class="fa fa-bed text-primary tur"></i>3
+                                            Bed</small>
+                                        <small class="flex-fill sqt"><i class="fa fa-bath text-primary tur"></i>2
+                                            Bath</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 wow fadeInUp stee" data-wow-delay="0.1s"
+                                style="animation-delay: 0.1s;">
+                                <div class="property-item vi">
+                                    <div class="lla">
+                                        <a href=""><img class="img-fluid"
+                                                src="https://themewagon.github.io/makan/img/property-4.jpg" alt=""></a>
+                                        <div class="sell">For Rent</div>
+                                        <div class="text-primary appart">Building</div>
+                                    </div>
+                                    <div class="urb">
+                                        <h5 class="text-primary bane">$12,345</h5>
+                                        <a class="gold" href="">Golden Urban House For Sell</a>
+                                        <p><i class="fa fa-map-marker-alt text-primary tur"></i>123 Street, New York,
+                                            USA</p>
+                                    </div>
+                                    <div class="bed">
+                                        <small class="flex-fill sqt"><i
+                                                class="fa fa-ruler-combined text-primary tur"></i>1000 Sqft</small>
+                                        <small class="flex-fill sqt"><i class="fa fa-bed text-primary tur"></i>3
+                                            Bed</small>
+                                        <small class="flex-fill sqt"><i class="fa fa-bath text-primary tur"></i>2
+                                            Bath</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 wow fadeInUp stee" data-wow-delay="0.3s"
+                                style="animation-delay: 0.3s;">
+                                <div class="property-item vi">
+                                    <div class="lla">
+                                        <a href=""><img class="img-fluid"
+                                                src="https://themewagon.github.io/makan/img/property-5.jpg" alt=""></a>
+                                        <div class="sell">For Sell</div>
+                                        <div class="text-primary appart">Home</div>
+                                    </div>
+                                    <div class="urb">
+                                        <h5 class="text-primary bane">$12,345</h5>
+                                        <a class="gold" href="">Golden Urban House For Sell</a>
+                                        <p><i class="fa fa-map-marker-alt text-primary tur"></i>123 Street, New York,
+                                            USA</p>
+                                    </div>
+                                    <div class="bed">
+                                        <small class="flex-fill sqt"><i
+                                                class="fa fa-ruler-combined text-primary tur"></i>1000 Sqft</small>
+                                        <small class="flex-fill sqt"><i class="fa fa-bed text-primary tur"></i>3
+                                            Bed</small>
+                                        <small class="flex-fill sqt"><i class="fa fa-bath text-primary tur"></i>2
+                                            Bath</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 wow fadeInUp stee" data-wow-delay="0.5s"
+                                style="animation-delay: 0.5s;">
+                                <div class="property-item vi">
+                                    <div class="lla">
+                                        <a href=""><img class="img-fluid"
+                                                src="https://themewagon.github.io/makan/img/property-6.jpg" alt=""></a>
+                                        <div class="sell">For Rent</div>
+                                        <div class="text-primary appart">Shop</div>
+                                    </div>
+                                    <div class="urb">
+                                        <h5 class="text-primary bane">$12,345</h5>
+                                        <a class="gold" href="">Golden Urban House For Sell</a>
+                                        <p><i class="fa fa-map-marker-alt text-primary tur"></i>123 Street, New York,
+                                            USA</p>
+                                    </div>
+                                    <div class="bed">
+                                        <small class="flex-fill sqt"><i
+                                                class="fa fa-ruler-combined text-primary tur"></i>1000 Sqft</small>
+                                        <small class="flex-fill sqt"><i class="fa fa-bed text-primary tur"></i>3
+                                            Bed</small>
+                                        <small class="flex-fill sqt"><i class="fa fa-bath text-primary tur"></i>2
+                                            Bath</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 wow fadeInUp stee" data-wow-delay="0.1s">
+                                <a class="btn btn-primary mor" href="">Browse More Property</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div id="tab-2" class="tab-pane fade show p-0">
+                        <div class="row g-4">
+                            <div class="col-lg-4 col-md-6">
+                                <div class="property-item rounded overflow-hidden">
+                                    <div class="position-relative overflow-hidden">
+                                        <a href=""><img class="img-fluid" src="img/property-1.jpg" alt=""></a>
+                                        <div
+                                            class="bg-primary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">
+                                            For Sell</div>
+                                        <div
+                                            class="bg-white rounded-top text-primary position-absolute start-0 bottom-0 mx-4 pt-1 px-3">
+                                            Appartment</div>
+                                    </div>
+                                    <div class="p-4 pb-0">
+                                        <h5 class="text-primary mb-3">$12,345</h5>
+                                        <a class="d-block h5 mb-2" href="">Golden Urban House For Sell</a>
+                                        <p><i class="fa fa-map-marker-alt text-primary me-2"></i>123 Street, New York,
+                                            USA</p>
+                                    </div>
+                                    <div class="d-flex border-top">
+                                        <small class="flex-fill text-center border-end py-2"><i
+                                                class="fa fa-ruler-combined text-primary me-2"></i>1000 Sqft</small>
+                                        <small class="flex-fill text-center border-end py-2"><i
+                                                class="fa fa-bed text-primary me-2"></i>3 Bed</small>
+                                        <small class="flex-fill text-center py-2"><i
+                                                class="fa fa-bath text-primary me-2"></i>2 Bath</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6">
+                                <div class="property-item rounded overflow-hidden">
+                                    <div class="position-relative overflow-hidden">
+                                        <a href=""><img class="img-fluid" src="img/property-2.jpg" alt=""></a>
+                                        <div
+                                            class="bg-primary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">
+                                            For Rent</div>
+                                        <div
+                                            class="bg-white rounded-top text-primary position-absolute start-0 bottom-0 mx-4 pt-1 px-3">
+                                            Villa</div>
+                                    </div>
+                                    <div class="p-4 pb-0">
+                                        <h5 class="text-primary mb-3">$12,345</h5>
+                                        <a class="d-block h5 mb-2" href="">Golden Urban House For Sell</a>
+                                        <p><i class="fa fa-map-marker-alt text-primary me-2"></i>123 Street, New York,
+                                            USA</p>
+                                    </div>
+                                    <div class="d-flex border-top">
+                                        <small class="flex-fill text-center border-end py-2"><i
+                                                class="fa fa-ruler-combined text-primary me-2"></i>1000 Sqft</small>
+                                        <small class="flex-fill text-center border-end py-2"><i
+                                                class="fa fa-bed text-primary me-2"></i>3 Bed</small>
+                                        <small class="flex-fill text-center py-2"><i
+                                                class="fa fa-bath text-primary me-2"></i>2 Bath</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6">
+                                <div class="property-item rounded overflow-hidden">
+                                    <div class="position-relative overflow-hidden">
+                                        <a href=""><img class="img-fluid" src="img/property-3.jpg" alt=""></a>
+                                        <div
+                                            class="bg-primary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">
+                                            For Sell</div>
+                                        <div
+                                            class="bg-white rounded-top text-primary position-absolute start-0 bottom-0 mx-4 pt-1 px-3">
+                                            Office</div>
+                                    </div>
+                                    <div class="p-4 pb-0">
+                                        <h5 class="text-primary mb-3">$12,345</h5>
+                                        <a class="d-block h5 mb-2" href="">Golden Urban House For Sell</a>
+                                        <p><i class="fa fa-map-marker-alt text-primary me-2"></i>123 Street, New York,
+                                            USA</p>
+                                    </div>
+                                    <div class="d-flex border-top">
+                                        <small class="flex-fill text-center border-end py-2"><i
+                                                class="fa fa-ruler-combined text-primary me-2"></i>1000 Sqft</small>
+                                        <small class="flex-fill text-center border-end py-2"><i
+                                                class="fa fa-bed text-primary me-2"></i>3 Bed</small>
+                                        <small class="flex-fill text-center py-2"><i
+                                                class="fa fa-bath text-primary me-2"></i>2 Bath</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6">
+                                <div class="property-item rounded overflow-hidden">
+                                    <div class="position-relative overflow-hidden">
+                                        <a href=""><img class="img-fluid" src="img/property-4.jpg" alt=""></a>
+                                        <div
+                                            class="bg-primary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">
+                                            For Rent</div>
+                                        <div
+                                            class="bg-white rounded-top text-primary position-absolute start-0 bottom-0 mx-4 pt-1 px-3">
+                                            Building</div>
+                                    </div>
+                                    <div class="p-4 pb-0">
+                                        <h5 class="text-primary mb-3">$12,345</h5>
+                                        <a class="d-block h5 mb-2" href="">Golden Urban House For Sell</a>
+                                        <p><i class="fa fa-map-marker-alt text-primary me-2"></i>123 Street, New York,
+                                            USA</p>
+                                    </div>
+                                    <div class="d-flex border-top">
+                                        <small class="flex-fill text-center border-end py-2"><i
+                                                class="fa fa-ruler-combined text-primary me-2"></i>1000 Sqft</small>
+                                        <small class="flex-fill text-center border-end py-2"><i
+                                                class="fa fa-bed text-primary me-2"></i>3 Bed</small>
+                                        <small class="flex-fill text-center py-2"><i
+                                                class="fa fa-bath text-primary me-2"></i>2 Bath</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6">
+                                <div class="property-item rounded overflow-hidden">
+                                    <div class="position-relative overflow-hidden">
+                                        <a href=""><img class="img-fluid" src="img/property-5.jpg" alt=""></a>
+                                        <div
+                                            class="bg-primary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">
+                                            For Sell</div>
+                                        <div
+                                            class="bg-white rounded-top text-primary position-absolute start-0 bottom-0 mx-4 pt-1 px-3">
+                                            Home</div>
+                                    </div>
+                                    <div class="p-4 pb-0">
+                                        <h5 class="text-primary mb-3">$12,345</h5>
+                                        <a class="d-block h5 mb-2" href="">Golden Urban House For Sell</a>
+                                        <p><i class="fa fa-map-marker-alt text-primary me-2"></i>123 Street, New York,
+                                            USA</p>
+                                    </div>
+                                    <div class="d-flex border-top">
+                                        <small class="flex-fill text-center border-end py-2"><i
+                                                class="fa fa-ruler-combined text-primary me-2"></i>1000 Sqft</small>
+                                        <small class="flex-fill text-center border-end py-2"><i
+                                                class="fa fa-bed text-primary me-2"></i>3 Bed</small>
+                                        <small class="flex-fill text-center py-2"><i
+                                                class="fa fa-bath text-primary me-2"></i>2 Bath</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6">
+                                <div class="property-item rounded overflow-hidden">
+                                    <div class="position-relative overflow-hidden">
+                                        <a href=""><img class="img-fluid" src="img/property-6.jpg" alt=""></a>
+                                        <div
+                                            class="bg-primary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">
+                                            For Rent</div>
+                                        <div
+                                            class="bg-white rounded-top text-primary position-absolute start-0 bottom-0 mx-4 pt-1 px-3">
+                                            Shop</div>
+                                    </div>
+                                    <div class="p-4 pb-0">
+                                        <h5 class="text-primary mb-3">$12,345</h5>
+                                        <a class="d-block h5 mb-2" href="">Golden Urban House For Sell</a>
+                                        <p><i class="fa fa-map-marker-alt text-primary me-2"></i>123 Street, New York,
+                                            USA</p>
+                                    </div>
+                                    <div class="d-flex border-top">
+                                        <small class="flex-fill text-center border-end py-2"><i
+                                                class="fa fa-ruler-combined text-primary me-2"></i>1000 Sqft</small>
+                                        <small class="flex-fill text-center border-end py-2"><i
+                                                class="fa fa-bed text-primary me-2"></i>3 Bed</small>
+                                        <small class="flex-fill text-center py-2"><i
+                                                class="fa fa-bath text-primary me-2"></i>2 Bath</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 text-center">
+                                <a class="btn btn-primary py-3 px-5" href="">Browse More Property</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="tab-3" class="tab-pane fade show p-0">
+                        <div class="row g-4">
+                            <div class="col-lg-4 col-md-6">
+                                <div class="property-item rounded overflow-hidden">
+                                    <div class="position-relative overflow-hidden">
+                                        <a href=""><img class="img-fluid" src="img/property-1.jpg" alt=""></a>
+                                        <div
+                                            class="bg-primary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">
+                                            For Sell</div>
+                                        <div
+                                            class="bg-white rounded-top text-primary position-absolute start-0 bottom-0 mx-4 pt-1 px-3">
+                                            Appartment</div>
+                                    </div>
+                                    <div class="p-4 pb-0">
+                                        <h5 class="text-primary mb-3">$12,345</h5>
+                                        <a class="d-block h5 mb-2" href="">Golden Urban House For Sell</a>
+                                        <p><i class="fa fa-map-marker-alt text-primary me-2"></i>123 Street, New York,
+                                            USA</p>
+                                    </div>
+                                    <div class="d-flex border-top">
+                                        <small class="flex-fill text-center border-end py-2"><i
+                                                class="fa fa-ruler-combined text-primary me-2"></i>1000 Sqft</small>
+                                        <small class="flex-fill text-center border-end py-2"><i
+                                                class="fa fa-bed text-primary me-2"></i>3 Bed</small>
+                                        <small class="flex-fill text-center py-2"><i
+                                                class="fa fa-bath text-primary me-2"></i>2 Bath</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6">
+                                <div class="property-item rounded overflow-hidden">
+                                    <div class="position-relative overflow-hidden">
+                                        <a href=""><img class="img-fluid" src="img/property-2.jpg" alt=""></a>
+                                        <div
+                                            class="bg-primary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">
+                                            For Rent</div>
+                                        <div
+                                            class="bg-white rounded-top text-primary position-absolute start-0 bottom-0 mx-4 pt-1 px-3">
+                                            Villa</div>
+                                    </div>
+                                    <div class="p-4 pb-0">
+                                        <h5 class="text-primary mb-3">$12,345</h5>
+                                        <a class="d-block h5 mb-2" href="">Golden Urban House For Sell</a>
+                                        <p><i class="fa fa-map-marker-alt text-primary me-2"></i>123 Street, New York,
+                                            USA</p>
+                                    </div>
+                                    <div class="d-flex border-top">
+                                        <small class="flex-fill text-center border-end py-2"><i
+                                                class="fa fa-ruler-combined text-primary me-2"></i>1000 Sqft</small>
+                                        <small class="flex-fill text-center border-end py-2"><i
+                                                class="fa fa-bed text-primary me-2"></i>3 Bed</small>
+                                        <small class="flex-fill text-center py-2"><i
+                                                class="fa fa-bath text-primary me-2"></i>2 Bath</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6">
+                                <div class="property-item rounded overflow-hidden">
+                                    <div class="position-relative overflow-hidden">
+                                        <a href=""><img class="img-fluid" src="img/property-3.jpg" alt=""></a>
+                                        <div
+                                            class="bg-primary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">
+                                            For Sell</div>
+                                        <div
+                                            class="bg-white rounded-top text-primary position-absolute start-0 bottom-0 mx-4 pt-1 px-3">
+                                            Office</div>
+                                    </div>
+                                    <div class="p-4 pb-0">
+                                        <h5 class="text-primary mb-3">$12,345</h5>
+                                        <a class="d-block h5 mb-2" href="">Golden Urban House For Sell</a>
+                                        <p><i class="fa fa-map-marker-alt text-primary me-2"></i>123 Street, New York,
+                                            USA</p>
+                                    </div>
+                                    <div class="d-flex border-top">
+                                        <small class="flex-fill text-center border-end py-2"><i
+                                                class="fa fa-ruler-combined text-primary me-2"></i>1000 Sqft</small>
+                                        <small class="flex-fill text-center border-end py-2"><i
+                                                class="fa fa-bed text-primary me-2"></i>3 Bed</small>
+                                        <small class="flex-fill text-center py-2"><i
+                                                class="fa fa-bath text-primary me-2"></i>2 Bath</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6">
+                                <div class="property-item rounded overflow-hidden">
+                                    <div class="position-relative overflow-hidden">
+                                        <a href=""><img class="img-fluid" src="img/property-4.jpg" alt=""></a>
+                                        <div
+                                            class="bg-primary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">
+                                            For Rent</div>
+                                        <div
+                                            class="bg-white rounded-top text-primary position-absolute start-0 bottom-0 mx-4 pt-1 px-3">
+                                            Building</div>
+                                    </div>
+                                    <div class="p-4 pb-0">
+                                        <h5 class="text-primary mb-3">$12,345</h5>
+                                        <a class="d-block h5 mb-2" href="">Golden Urban House For Sell</a>
+                                        <p><i class="fa fa-map-marker-alt text-primary me-2"></i>123 Street, New York,
+                                            USA</p>
+                                    </div>
+                                    <div class="d-flex border-top">
+                                        <small class="flex-fill text-center border-end py-2"><i
+                                                class="fa fa-ruler-combined text-primary me-2"></i>1000 Sqft</small>
+                                        <small class="flex-fill text-center border-end py-2"><i
+                                                class="fa fa-bed text-primary me-2"></i>3 Bed</small>
+                                        <small class="flex-fill text-center py-2"><i
+                                                class="fa fa-bath text-primary me-2"></i>2 Bath</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6">
+                                <div class="property-item rounded overflow-hidden">
+                                    <div class="position-relative overflow-hidden">
+                                        <a href=""><img class="img-fluid" src="img/property-5.jpg" alt=""></a>
+                                        <div
+                                            class="bg-primary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">
+                                            For Sell</div>
+                                        <div
+                                            class="bg-white rounded-top text-primary position-absolute start-0 bottom-0 mx-4 pt-1 px-3">
+                                            Home</div>
+                                    </div>
+                                    <div class="p-4 pb-0">
+                                        <h5 class="text-primary mb-3">$12,345</h5>
+                                        <a class="d-block h5 mb-2" href="">Golden Urban House For Sell</a>
+                                        <p><i class="fa fa-map-marker-alt text-primary me-2"></i>123 Street, New York,
+                                            USA</p>
+                                    </div>
+                                    <div class="d-flex border-top">
+                                        <small class="flex-fill text-center border-end py-2"><i
+                                                class="fa fa-ruler-combined text-primary me-2"></i>1000 Sqft</small>
+                                        <small class="flex-fill text-center border-end py-2"><i
+                                                class="fa fa-bed text-primary me-2"></i>3 Bed</small>
+                                        <small class="flex-fill text-center py-2"><i
+                                                class="fa fa-bath text-primary me-2"></i>2 Bath</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6">
+                                <div class="property-item rounded overflow-hidden">
+                                    <div class="position-relative overflow-hidden">
+                                        <a href=""><img class="img-fluid" src="img/property-6.jpg" alt=""></a>
+                                        <div
+                                            class="bg-primary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">
+                                            For Rent</div>
+                                        <div
+                                            class="bg-white rounded-top text-primary position-absolute start-0 bottom-0 mx-4 pt-1 px-3">
+                                            Shop</div>
+                                    </div>
+                                    <div class="p-4 pb-0">
+                                        <h5 class="text-primary mb-3">$12,345</h5>
+                                        <a class="d-block h5 mb-2" href="">Golden Urban House For Sell</a>
+                                        <p><i class="fa fa-map-marker-alt text-primary me-2"></i>123 Street, New York,
+                                            USA</p>
+                                    </div>
+                                    <div class="d-flex border-top">
+                                        <small class="flex-fill text-center border-end py-2"><i
+                                                class="fa fa-ruler-combined text-primary me-2"></i>1000 Sqft</small>
+                                        <small class="flex-fill text-center border-end py-2"><i
+                                                class="fa fa-bed text-primary me-2"></i>3 Bed</small>
+                                        <small class="flex-fill text-center py-2"><i
+                                                class="fa fa-bath text-primary me-2"></i>2 Bath</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 text-center">
+                                <a class="btn btn-primary py-3 px-5" href="">Browse More Property</a>
+                            </div>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Property List End -->
+
+        <!-- Call to Action Start -->
+
+        <div class="container-xxl sed">
+            <div class="container">
+                <div class="call">
+                    <div class="our">
+                        <div class="row g-5 agen">
+                            <div class="col-lg-6 wow fadeIn wit" data-wow-delay="0.1s">
+                                <img class="img-fluid eye"
+                                    src="https://themewagon.github.io/makan/img/call-to-action.jpg" alt="">
+                            </div>
+                            <div class="col-lg-6 wow fadeIn th" data-wow-delay="0.5s">
+                                <div class="tac">
+                                    <h1 class="con">Contact With Our Certified Agent</h1>
+                                    <p>Eirmod sed ipsum dolor sit rebum magna erat. Tempor lorem kasd vero ipsum sit sit
+                                        diam justo sed vero dolor duo.</p>
+                                </div>
+                                <a href="" class="btn btn-primary magn tur make"><i class="fa fa-phone-alt tur"></i>Make
+                                    A Call</a>
+                                <a href="" class="btn btn-dark magn"><i class="fa fa-calendar-alt tur"></i>Get
+                                    Appoinment</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Call to Action End -->
+
+        <!-- Team Start -->
+
+        <div class="container-xxl sed">
+            <div class="container">
+                <div class="nts wow fadeInUp" data-wow-delay="0.1s">
+                    <h1 class="con">Property Agents</h1>
+                    <p>Eirmod sed ipsum dolor sit rebum labore magna erat. Tempor ut dolore lorem kasd vero ipsum sit
+                        eirmod sit. Ipsum diam justo sed rebum vero dolor duo.</p>
+                </div>
+                <div class="row g-4">
+                    <div class="col-lg-3 col-md-6 wow fadeInUp visi ani" data-wow-delay="0.1s">
+                        <div class="team-item tea">
+                            <div class="am">
+                                <img class="img-fluid" src="https://themewagon.github.io/makan/img/team-1.jpg" alt="">
+                                <div class="fac">
+                                    <a class="btn btn-square twit" href=""><i class="fab fa-facebook-f"></i></a>
+                                    <a class="btn btn-square twit" href=""><i class="fab fa-twitter"></i></a>
+                                    <a class="btn btn-square twit" href=""><i class="fab fa-instagram"></i></a>
+                                </div>
+                            </div>
+                            <div class="fulna">
+                                <h5 class="des">Full Name</h5>
+                                <small>Designation</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 wow fadeInUp visi" data-wow-delay="0.3s"
+                        style="animation-delay: 0.3s;">
+                        <div class="team-item tea">
+                            <div class="am">
+                                <img class="img-fluid" src="https://themewagon.github.io/makan/img/team-2.jpg" alt="">
+                                <div class="fac">
+                                    <a class="btn btn-square twit" href=""><i class="fab fa-facebook-f"></i></a>
+                                    <a class="btn btn-square twit" href=""><i class="fab fa-twitter"></i></a>
+                                    <a class="btn btn-square twit" href=""><i class="fab fa-instagram"></i></a>
+                                </div>
+                            </div>
+                            <div class="fulna">
+                                <h5 class="des">Full Name</h5>
+                                <small>Designation</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 wow fadeInUp visi" data-wow-delay="0.5s"
+                        style="animation-delay: 0.5s;">
+                        <div class="team-item tea">
+                            <div class="am">
+                                <img class="img-fluid" src="https://themewagon.github.io/makan/img/team-3.jpg" alt="">
+                                <div class="fac">
+                                    <a class="btn btn-square twit" href=""><i class="fab fa-facebook-f"></i></a>
+                                    <a class="btn btn-square twit" href=""><i class="fab fa-twitter"></i></a>
+                                    <a class="btn btn-square twit" href=""><i class="fab fa-instagram"></i></a>
+                                </div>
+                            </div>
+                            <div class="fulna">
+                                <h5 class="des">Full Name</h5>
+                                <small>Designation</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 wow fadeInUp visi" data-wow-delay="0.7s"
+                        style="animation-delay: 0.7s;">
+                        <div class="team-item tea">
+                            <div class="am">
+                                <img class="img-fluid" src="https://themewagon.github.io/makan/img/team-4.jpg" alt="">
+                                <div class="fac">
+                                    <a class="btn btn-square twit" href=""><i class="fab fa-facebook-f"></i></a>
+                                    <a class="btn btn-square twit" href=""><i class="fab fa-twitter"></i></a>
+                                    <a class="btn btn-square twit" href=""><i class="fab fa-instagram"></i></a>
+                                </div>
+                            </div>
+                            <div class="fulna">
+                                <h5 class="des">Full Name</h5>
+                                <small>Designation</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Team End -->
+
+        <!-- Testimonial Start -->
+
+        <div class="container-xxl sed">
+            <div class="container">
+                <div class="nts wow fadeInUp" data-wow-delay="0.1s">
+                    <h1 class="con">Our Clients Say!</h1>
+                    <p>Eirmod sed ipsum dolor sit rebum labore magna erat. Tempor ut dolore lorem kasd vero ipsum sit
+                        eirmod sit. Ipsum diam justo sed rebum vero dolor duo.</p>
+                </div>
+                <div class="owl-carousel testimonial-carousel wow fadeInUp owl-loaded owl-drag visi ani"
+                    data-wow-delay="0.1s">
+                    <div class="owl-stage-outer">
+                        <div class="owl-stage">
+                            <!-- <div class="owl-item cloned dia">
+                                <div class="testimonial-item call">
+                                    <div class="our">
+                                        <p>Tempor stet labore dolor clita stet diam amet ipsum dolor duo ipsum rebum
+                                            stet dolor amet diam stet. Est stet ea lorem amet est kasd kasd erat eos</p>
+                                        <div class="cli">
+                                            <img class="img-fluid ent" src="img/testimonial-2.jpg">
+                                            <div class="prof">
+                                                <h6 class="sion">Client Name</h6>
+                                                <small>Profession</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> -->
+                            <!-- <div class="owl-item cloned" style="width: 482px; margin-right: 24px;">
+                                <div class="testimonial-item bg-light rounded p-3">
+                                    <div class="bg-white border rounded p-4">
+                                        <p>Tempor stet labore dolor clita stet diam amet ipsum dolor duo ipsum rebum
+                                            stet dolor amet diam stet. Est stet ea lorem amet est kasd kasd erat eos</p>
+                                        <div class="d-flex align-items-center">
+                                            <img class="img-fluid flex-shrink-0 rounded" src="img/testimonial-3.jpg"
+                                                style="width: 45px; height: 45px;">
+                                            <div class="ps-3">
+                                                <h6 class="fw-bold mb-1">Client Name</h6>
+                                                <small>Profession</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> -->
+                            <div class="owl-item active dia">
+                                <div class="testimonial-item call">
+                                    <div class="our">
+                                        <p>Tempor stet labore dolor clita stet diam amet ipsum dolor duo ipsum rebum
+                                            stet dolor amet diam stet. Est stet ea lorem amet est kasd kasd erat eos</p>
+                                        <div class="cli">
+                                            <img class="img-fluid ent"
+                                                src="https://themewagon.github.io/makan/img/testimonial-1.jpg">
+                                            <div class="prof">
+                                                <h6 class="sion">Client Name</h6>
+                                                <small>Profession</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="owl-item active dia">
+                                <div class="testimonial-item call">
+                                    <div class="our">
+                                        <p>Tempor stet labore dolor clita stet diam amet ipsum dolor duo ipsum rebum
+                                            stet dolor amet diam stet. Est stet ea lorem amet est kasd kasd erat eos</p>
+                                        <div class="cli">
+                                            <img class="img-fluid ent"
+                                                src="https://themewagon.github.io/makan/img/testimonial-2.jpg">
+                                            <div class="prof">
+                                                <h6 class="sion">Client Name</h6>
+                                                <small>Profession</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- <div class="owl-item" style="width: 482px; margin-right: 24px;">
+                                <div class="testimonial-item bg-light rounded p-3">
+                                    <div class="bg-white border rounded p-4">
+                                        <p>Tempor stet labore dolor clita stet diam amet ipsum dolor duo ipsum rebum
+                                            stet dolor amet diam stet. Est stet ea lorem amet est kasd kasd erat eos</p>
+                                        <div class="d-flex align-items-center">
+                                            <img class="img-fluid flex-shrink-0 rounded" src="img/testimonial-3.jpg"
+                                                style="width: 45px; height: 45px;">
+                                            <div class="ps-3">
+                                                <h6 class="fw-bold mb-1">Client Name</h6>
+                                                <small>Profession</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> -->
+                            <!-- <div class="owl-item cloned" style="width: 482px; margin-right: 24px;">
+                                <div class="testimonial-item bg-light rounded p-3">
+                                    <div class="bg-white border rounded p-4">
+                                        <p>Tempor stet labore dolor clita stet diam amet ipsum dolor duo ipsum rebum
+                                            stet dolor amet diam stet. Est stet ea lorem amet est kasd kasd erat eos</p>
+                                        <div class="d-flex align-items-center">
+                                            <img class="img-fluid flex-shrink-0 rounded" src="img/testimonial-1.jpg"
+                                                style="width: 45px; height: 45px;">
+                                            <div class="ps-3">
+                                                <h6 class="fw-bold mb-1">Client Name</h6>
+                                                <small>Profession</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="owl-item cloned" style="width: 482px; margin-right: 24px;">
+                                <div class="testimonial-item bg-light rounded p-3">
+                                    <div class="bg-white border rounded p-4">
+                                        <p>Tempor stet labore dolor clita stet diam amet ipsum dolor duo ipsum rebum
+                                            stet dolor amet diam stet. Est stet ea lorem amet est kasd kasd erat eos</p>
+                                        <div class="d-flex align-items-center">
+                                            <img class="img-fluid flex-shrink-0 rounded" src="img/testimonial-2.jpg"
+                                                style="width: 45px; height: 45px;">
+                                            <div class="ps-3">
+                                                <h6 class="fw-bold mb-1">Client Name</h6>
+                                                <small>Profession</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> -->
+                        </div>
+                    </div>
+                    <div class="owl-nav">
+                        <div class="owl-prev"><i class="bi bi-arrow-left"></i></div>
+                        <div class="owl-next"><i class="bi bi-arrow-right"></i></div>
+                    </div>
+                    <div class="owl-dots disabled"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Testimonial End -->
+
+        <!-- Footer Start -->
+
+        <div class="container-fluid footer wow fadeIn wit fo" data-wow-delay="0.1s">
+            <div class="container sed">
+                <div class="row g-5">
+                    <div class="col-lg-3 col-md-6">
+                        <h5 class="tou">Get In Touch</h5>
+                        <p class="eet"><i class="fa fa-map-marker-alt yor"></i>123 Street, New York, USA</p>
+                        <p class="eet"><i class="fa fa-phone-alt yor"></i>+012 345 67890</p>
+                        <p class="eet"><i class="fa fa-envelope yor"></i>info@example.com</p>
+                        <div class="tw">
+                            <a class="btn btn-outline-light btn-social lin" href=""><i class="fab fa-twitter"></i></a>
+                            <a class="btn btn-outline-light btn-social lin" href=""><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-outline-light btn-social lin" href=""><i class="fab fa-youtube"></i></a>
+                            <a class="btn btn-outline-light btn-social lin" href=""><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <h5 class="tou">Quick Links</h5>
+                        <a class="btn btn-link quik" href="">About Us</a>
+                        <a class="btn btn-link quik" href="">Contact Us</a>
+                        <a class="btn btn-link quik" href="">Our Services</a>
+                        <a class="btn btn-link quik" href="">Privacy Policy</a>
+                        <a class="btn btn-link quik" href="">Terms &amp; Condition</a>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <h5 class="tou">Photo Gallery</h5>
+                        <div class="row g-2 gall">
+                            <div class="col-4">
+                                <img class="img-fluid pho" src="https://themewagon.github.io/makan/img/property-1.jpg" alt="">
+                            </div>
+                            <div class="col-4">
+                                <img class="img-fluid pho" src="https://themewagon.github.io/makan/img/property-2.jpg" alt="">
+                            </div>
+                            <div class="col-4">
+                                <img class="img-fluid pho" src="https://themewagon.github.io/makan/img/property-3.jpg" alt="">
+                            </div>
+                            <div class="col-4">
+                                <img class="img-fluid pho" src="https://themewagon.github.io/makan/img/property-4.jpg" alt="">
+                            </div>
+                            <div class="col-4">
+                                <img class="img-fluid pho" src="https://themewagon.github.io/makan/img/property-5.jpg" alt="">
+                            </div>
+                            <div class="col-4">
+                                <img class="img-fluid pho" src="https://themewagon.github.io/makan/img/property-6.jpg" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <h5 class="tou">Newsletter</h5>
+                        <p>Dolor amet sit justo amet elitr clita ipsum elitr est.</p>
+                        <div class="news">
+                            <input class="form-control lette" type="text" placeholder="Your email">
+                            <button type="button" class="btn sign">SignUp</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
