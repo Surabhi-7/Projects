@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *,
+    ::after,
+    ::before {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      transition: all 0.4s;
+    }
+
+
+    body {
+      font-family: sans-serif;
+    }
+
+    a {
+      text-decoration: none;
+      color: black;
+      font-size: 1.3rem;
+      font-weight: bold;
+    }
+
+    .navbar {
+      display: flex;
+      height: 5rem;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #f2d4a6;
+    }
+
+    .logo {
+      margin-right: 10px;
+      margin-left: 20px;
+      font-size: 20px;
+      color: black;
+      text-shadow: 2px 2px 5px white;
+      letter-spacing: 1px;
+    }
+
+    .nav {
+      padding-right: 1.5rem;
+      cursor: pointer;
+    }
+
+    .nav .line {
+      display: block;
+      width: 2.5rem;
+      height: 2px;
+      margin-bottom: 10px;
+      background-color: black;
+      cursor: pointer;
+    }
+
+    .nav-menu {
+      position: fixed;
+      width: 94%;
+      top: 6rem;
+      left: 18px;
+      font-weight: 600;
+
+    }
+
+    .nav-menu a {
+      display: block;
+      text-align: center;
+      padding: 5px 0;
+    }
+
+    .nav-menu a:hover {
+      background-color: #c59d5f;
+      color: #fff;
+    }
+
+    .hide {
+      display: none;
+    }
+
+    @media screen and (min-width:600px) {
+      .nav-menu {
+        display: block;
+        position: static;
+        width: auto;
+        margin-right: 20px;
+        background: none;
+      }
+
+      .nav-menu a {
+        display: inline-block;
+        padding: 15px 20px;
+      }
+
+      .nav-menu a:hover {
+        background-color: #c59d5f;
+        border-radius: 5px;
+        color: #fff;
+      }
+
+      .nav {
+        display: none;
+      }
+    }
+
+    /* Our Menu*/
+
+    .menu {
+      padding: 12rem 0;
+    }
+
+    .title {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    h2 {
+      letter-spacing: 0.25rem;
+      text-transform: capitalize;
+      line-height: 1.25rem;
+      margin-bottom: 0.75rem;
+      font-family: "Roboto", sans-serif;
+      font-size: 2rem;
+    }
+    h4{
+      letter-spacing: 0.25rem;
+      text-transform: capitalize;
+      line-height: 1.25rem;
+      margin-bottom: 0.75rem;
+      font-family: "Roboto", sans-serif;
+      font-size: 0.875rem;
+    }
+
+    .underline {
+      width: 5rem;
+      height: 0.25rem;
+      background: #c59d5f;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .btn-container {
+      margin-bottom: 4rem;
+      display: flex;
+      justify-content: center;
+    }
+
+    .filter-btn {
+      background: transparent;
+      border-color: #c59d5f;
+      font-size: 1rem;
+      text-transform: capitalize;
+      margin: 0 0.5rem;
+      letter-spacing: 1px;
+      border-radius: 0.5rem;
+      padding: 0.375rem 0.75rem;
+      color: #c59d5f;
+      cursor: pointer;
+      transition: all 0.3s linear;
+    }
+
+    .filter-btn:hover {
+      background: #c59d5f;
+      color: #fff;
+    }
+
+    .butter {
+      width: 90vw;
+      margin: 0 auto;
+      max-width: 1170px;
+      display: grid;
+      gap: 3rem 2rem;
+      justify-items: center;
+    }
+
+    .milk {
+      display: grid;
+      gap: 1rem 2rem;
+      max-width: 25rem;
+    }
+
+    .photo {
+      object-fit: cover;
+      height: 200px;
+      border: 0.25rem solid #c59d5f;
+      border-radius: 0.5rem;
+      width: 232px;
+    }
+    .info header {
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 0.5px dotted hsl(210, 22%, 49%);
+    }
+
+    .info h4 {
+      margin-bottom: 0.5rem;
+    }
+
+    .price {
+      color: #c59d5f;
+    }
+
+    .text {
+      margin-bottom: 0;
+      padding-top: 1rem;
+    }
+
+    @media screen and (min-width: 768px) {
+      .milk {
+        grid-template-columns: 225px 1fr;
+        gap: 0 1.25rem;
+        max-width: 40rem;
+      }
+
+      .photo {
+        height: 175px;
+      }
+    }
+
+    @media screen and (min-width: 1200px) {
+      .butter {
+        width: 95vw;
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .photo {
+        height: 150px;
+      }
+    }
+    footer {
+      background-color: #f2d4a6;
+      color: black;
+      font-size: 16px;
+    }
+    footer * {
+      font-family: "Poppins", sans-serif;
+      box-sizing: border-box;
+      border: none;
+      outline: none;
+    }
+    .row {
+      padding: 2em 1em;
+    }
+    .row.primary {
+      display: grid;
+      grid-template-columns: 2fr 1fr 2fr;
+      align-items: stretch;
+    }
+    .column {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      padding: 0 2em;
+      min-height: 15em;
+    }
+    h3 {
+      width: 100%;
+      text-align: left;
+      color: black;
+      font-size: 1.6em;
+      white-space: nowrap;
+    }
+    ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      padding: 0;
+      margin: 0;
+    }
+    li:not(:first-child) {
+      margin-top: 0.8em;
+    }
+    ul li a {
+      color: black;
+      text-decoration: none;
+    }
+    ul li a:hover {
+      color: #c59d5f;
+    }
+    .about p {
+      text-align: justify;
+      line-height: 2;
+      margin: 0;
+    }
+    input {
+      font-size: 1em;
+      padding: 1em;
+      width: 100%;
+      border-radius: 5px;
+      margin-bottom: 5px;
+    }
+    .sub {
+      background-color: #c59d5f;
+      color: black;
+      font-size: 1em;
+      padding: 1em;
+      width: 100%;
+      border-radius: 5px;
+      margin-bottom: 5px;
+    }
+    div.social {
+      display: flex;
+      justify-content: space-around;
+      font-size: 2.4em;
+      flex-direction: row;
+      margin-top: 0.5em;
+    }
+    .social i:hover {
+      color: #fff;
+    }
+    .row.secondary {
+      display: flex;
+      justify-content: space-around;
+      text-align: center;
+    }
+    .row.secondary i {
+      font-size: 1.8em;
+      color: #c59d5f;
+    }
+    .row.secondary div {
+      padding: 1em 0;
+      width: 100%;
+    }
+    .row.secondary div:hover {
+      background-color: #c59d5f;
+    }
+    .copyright {
+      padding: 0.3em 1em;
+      background-color: #c59d5f;
+    }
+    .copyright p {
+      font-size: 0.9em;
+      text-align: center;
+    }
+    @media screen and (max-width: 850px) {
+      .row.primary {
+        grid-template-columns: 1fr;
+      }
+      .row.secondary {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar">
+    <div class="logo">
+      <h2>Food</h2>
+    </div>
+    <div class="nav">
+      <span class="line"></span>
+      <span class="line"></span>
+      <span class="line"></span>
+    </div>
+    <div class="nav-menu hide">
+      <a href="#">Home</a>
+      <a href="#">Career</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+    </div>
+  </nav>
+  <section class="menu">
+    <div class="title">
+      <h2>our menu</h2>
+      <div class="underline"></div>
+    </div>
+    <div class="btn-container">
+      <button type="button" class="filter-btn" data-id="all">all</button>
+      <button type="button" class="filter-btn" data-id="breakfast">breakfast</button>
+      <button type="button" class="filter-btn" data-id="lunch">lunch</button>
+      <button type="button" class="filter-btn" data-id="shakes">shakes</button>
+    </div>
+    <div class="butter">
+      <article class="milk">
+        <img src="https://github.com/john-smilga/javascript-basic-projects/blob/master/08-menu/final/menu-item.jpeg?raw=true"
+          alt="menu item" class="photo" />
+        <div class="info">
+          <header>
+            <h4>buttermilk pancakes</h4>
+            <h4 class="price">$15.99</h4>
+          </header>
+          <p class="text">
+            I'm baby woke mlkshk wolf bitters live-edge blue bottle, hammock freegan copper mug whatever cold-pressed
+          </p>
+        </div>
+      </article>
+      <article class="milk">
+        <img
+          src="https://github.com/john-smilga/javascript-basic-projects/blob/master/08-menu/final/images/item-2.jpeg?raw=true"
+          alt="menu item" class="photo" />
+        <div class="info">
+          <header>
+            <h4>diner double</h4>
+            <h4 class="price">$13.99</h4>
+          </header>
+          <p class="text">
+            vaporware iPhone mumblecore selvage raw denim slow-carb leggings gochujang helvetica man braid jianbing. Marfa thundercats
+          </p>
+        </div>
+      </article>
+      <article class="milk">
+        <img src="https://raw.githubusercontent.com/john-smilga/javascript-basic-projects/master/08-menu/final/images/item-3.jpeg" alt="menu item" class="photo shake" />
+        <div class="info">
+          <header>
+            <h4>godzilla milkshake</h4>
+            <h4 class="price">$6.99</h4>
+          </header>
+          <p class="text">
+            ombucha chillwave fanny pack 3 wolf moon street art photo booth before they sold out organic viral.
+          </p>
+        </div>
+      </article>
+      <article class="milk">
+        <img src="https://github.com/john-smilga/javascript-basic-projects/blob/master/08-menu/final/images/item-4.jpeg?raw=true" alt="menu item" class="photo shake" />
+        <div class="info">
+          <header>
+            <h4>country delight</h4>
+            <h4 class="price">$20.99</h4>
+          </header>
+          <p class="text">
+            Shabby chic keffiyeh neutra snackwave pork belly shoreditch. Prism austin mlkshk truffaut
+          </p>
+        </div>
+      </article>
+    </div>
+  </section>
+  <footer>
+    <div class="row primary">
+      <div class="column about">
+        <h3>Company Name</h3>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae,
+          voluptatem corporis error non, corrupti delectus unde, incidunt
+          dolorem quam porro tenetur autem? Maxime aspernatur quas, natus
+          nesciunt harum obcaecati voluptatum.
+        </p>
+      </div>
+      <div class="column links">
+        <h3>Quick Links</h3>
+        <ul>
+          <li>
+            <a href="#faq">F.A.Q</a>
+          </li>
+          <li>
+            <a href="#cookies-policy">Cookies Policy</a>
+          </li>
+          <li>
+            <a href="#terms-of-services">Terms Of Service</a>
+          </li>
+          <li>
+            <a href="#support">Support</a>
+          </li>
+          <li>
+            <a href="#careers">Careers</a>
+          </li>
+        </ul>
+      </div>
+      <div class="column subscribe">
+        <h3>Subscribe</h3>
+        <div>
+          <input type="email" placeholder="Your email id here" />
+          <button class="sub">Subscribe</button>
+        </div>
+        <div class="social">
+          <i class="fa-brands fa-facebook-square"></i>
+          <i class="fa-brands fa-instagram-square"></i>
+          <i class="fa-brands fa-twitter-square"></i>
+        </div>
+      </div>
+    </div>
+    <div class="row secondary">
+      <div>
+        <p>
+          <i class="fas fa-phone-alt"></i>
+        </p>
+        <p>+12 123456789</p>
+      </div>
+      <div>
+        <p><i class="fas fa-envelope"></i></p>
+        <p>mail@domain.com</p>
+      </div>
+      <div>
+        <p><i class="fas fa-map-marker-alt"></i></p>
+        <p>1234 Pearl Street</p>
+      </div>
+    </div>
+    <div class="row copyright">
+      <p>Copyright &copy; 2021 Coding Artist | All Rights Reserved</p>
+    </div>
+  </footer>
+</body>
+<script>
+  const hamburger = document.querySelector('.nav');
+  const navMenu = document.querySelector('.nav-menu');
+
+  hamburger.addEventListener('click', () => {
+    navMenu.classList.toggle('hide');
+  });
+  const menu = [
+  {
+    id: 1,
+    title: "buttermilk pancakes",
+    category: "breakfast",
+    price: 15.99,
+    img: "https://github.com/john-smilga/javascript-basic-projects/blob/master/08-menu/final/menu-item.jpeg?raw=true",
+    desc: `I'm baby woke mlkshk wolf bitters live-edge blue bottle, hammock freegan copper mug whatever cold-pressed `,
+  },
+  {
+    id: 2,
+    title: "diner double",
+    category: "lunch",
+    price: 13.99,
+    img: "https://github.com/john-smilga/javascript-basic-projects/blob/master/08-menu/final/images/item-2.jpeg?raw=true",
+    desc: `vaporware iPhone mumblecore selvage raw denim slow-carb leggings gochujang helvetica man braid jianbing. Marfa thundercats `,
+  },
+  {
+    id: 3,
+    title: "godzilla milkshake",
+    category: "shakes",
+    price: 6.99,
+    img: "https://github.com/john-smilga/javascript-basic-projects/blob/master/08-menu/final/images/item-3.jpeg?raw=true",
+    desc: `ombucha chillwave fanny pack 3 wolf moon street art photo booth before they sold out organic viral.`,
+  },
+  {
+    id: 4,
+    title: "country delight",
+    category: "breakfast",
+    price: 20.99,
+    img: "https://github.com/john-smilga/javascript-basic-projects/blob/master/08-menu/final/images/item-4.jpeg?raw=true",
+    desc: `Shabby chic keffiyeh neutra snackwave pork belly shoreditch. Prism austin mlkshk truffaut, `,
+  },
+  {
+    id: 5,
+    title: "egg attack",
+    category: "lunch",
+    price: 22.99,
+    img: "https://github.com/john-smilga/javascript-basic-projects/blob/master/08-menu/final/images/item-5.jpeg?raw=true",
+    desc: `franzen vegan pabst bicycle rights kickstarter pinterest meditation farm-to-table 90's pop-up `,
+  },
+  {
+    id: 6,
+    title: "oreo dream",
+    category: "shakes",
+    price: 18.99,
+    img: "https://github.com/john-smilga/javascript-basic-projects/blob/master/08-menu/final/images/item-6.jpeg?raw=true",
+    desc: `Portland chicharrones ethical edison bulb, palo santo craft beer chia heirloom iPhone everyday`,
+  },
+  {
+    id: 7,
+    title: "bacon overflow",
+    category: "breakfast",
+    price: 8.99,
+    img: "https://github.com/john-smilga/javascript-basic-projects/blob/master/08-menu/final/images/item-7.jpeg?raw=true",
+    desc: `carry jianbing normcore freegan. Viral single-origin coffee live-edge, pork belly cloud bread iceland put a bird `,
+  },
+];
+
+
+const sectionCenter = document.querySelector(".butter");
+const btnContainer = document.querySelector(".btn-container");
+
+window.addEventListener("DOMContentLoaded", function () {
+  diplayMenuItems(menu);
+  displayMenuButtons();
+});
+
+function diplayMenuItems(menuItems) {
+  let displayMenu = menuItems.map(function (item) {
+    // console.log(item);
+
+    return `<article class="milk">
+          <img src=${item.img} alt=${item.title} class="photo" />
+          <div class="info">
+            <header>
+              <h4>${item.title}</h4>
+              <h4 class="price">$${item.price}</h4>
+            </header>
+            <p class="text">
+              ${item.desc}
+            </p>
+          </div>
+        </article>`;
+  });
+  displayMenu = displayMenu.join("");
+  // console.log(displayMenu);
+
+  sectionCenter.innerHTML = displayMenu;
+}
+function displayMenuButtons() {
+  const categories = menu.reduce(
+    function (values, item) {
+      if (!values.includes(item.category)) {
+        values.push(item.category);
+      }
+      return values;
+    },
+    ["all"]
+  );
+  const categoryBtns = categories
+    .map(function (category) {
+      return `<button type="button" class="filter-btn" data-id=${category}>
+          ${category}
+        </button>`;
+    })
+    .join("");
+
+  btnContainer.innerHTML = categoryBtns;
+  const filterBtns = btnContainer.querySelectorAll(".filter-btn");
+  console.log(filterBtns);
+
+  filterBtns.forEach(function (btn) {
+    btn.addEventListener("click", function (e) {
+      // console.log(e.currentTarget.dataset);
+      const category = e.currentTarget.dataset.id;
+      const menuCategory = menu.filter(function (menuItem) {
+        // console.log(menuItem.category);
+        if (menuItem.category === category) {
+          return menuItem;
+        }
+      });
+      if (category === "all") {
+        diplayMenuItems(menu);
+      } else {
+        diplayMenuItems(menuCategory);
+      }
+    });
+  });
+}
+</script>
+
+</html>
